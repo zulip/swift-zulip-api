@@ -63,6 +63,7 @@ fastlane/test_output
 Packages
 xcuserdata
 *.xcodeproj
+Package.resolved
 
 ### Xcode ###
 # Xcode
