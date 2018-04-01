@@ -15,4 +15,19 @@ class ZulipTests: XCTestCase {
             "`Zulip.config` is incorrect."
         )
     }
+
+    func testMessages() {
+        let config = Config(
+            emailAddress: "theskunkmb@gmail.com",
+            apiKey: "qwertyuiop",
+            realmURL: "http://example.com"
+        );
+        let zulip = Zulip(config: config)
+        let messages = zulip.messages()
+
+        XCTAssert(
+            type(of: messages) == Messages.self,
+            "`type(of: Zulip.messages())` is incorrect."
+        )
+    }
 }
