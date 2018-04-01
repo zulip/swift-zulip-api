@@ -16,8 +16,7 @@ public class Zulip {
         self.config = config
     }
 
-    /*
-        TODO: Add functions that return classes with their own functions for
-              accessing Zulip.
-     */
+    func messages() -> Messages {
+        return Messages(config: self.config)
+    }
 }
