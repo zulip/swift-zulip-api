@@ -8,9 +8,11 @@ let package = Package(
     targets: [
         Target.target(
             name: "ZulipSwift",
+            path: "sources/ZulipSwift",
         ),
         Target.testTarget(
             name: "ZulipSwiftTests",
+            path: "tests/ZulipSwift",
             dependencies: ["ZulipSwift"],
         ),
     ]
