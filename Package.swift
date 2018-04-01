@@ -16,6 +16,7 @@ let package = Package(
     targets: [
         Target.target(
             name: "ZulipSwift",
+            dependencies: ["Alamofire"],
             path: "sources/ZulipSwift"
         ),
         Target.testTarget(
