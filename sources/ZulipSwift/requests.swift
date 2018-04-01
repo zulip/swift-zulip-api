@@ -30,33 +30,6 @@ private func makeRequest(
 }
 
 /*:
-    Makes an HTTP POST request.
-
-     - Parameters:
-        - urlString: The URL to make the request to.
-        - params: The dictionary of parameters for the POST request's body.
-        - username: A username for authentication, if necessary.
-        - password: A password for authentication, if necessary.
-        - callback: The callback to pass the response to.
- */
-internal func makePostRequest(
-    url: String,
-    params: [String: String],
-    username: String?,
-    password: String?,
-    callback: @escaping (DataResponse<Any>) -> Void
-) {
-    makeRequest(
-        method: HTTPMethod.post,
-        url: url,
-        params: params,
-        username: username,
-        password: password,
-        callback: callback
-    )
-}
-
-/*:
     Makes an HTTP GET request.
 
      - Parameters:
@@ -75,6 +48,33 @@ internal func makeGetRequest(
 ) {
     makeRequest(
         method: HTTPMethod.get,
+        url: url,
+        params: params,
+        username: username,
+        password: password,
+        callback: callback
+    )
+}
+
+/*:
+    Makes an HTTP POST request.
+
+     - Parameters:
+        - urlString: The URL to make the request to.
+        - params: The dictionary of parameters for the POST request's body.
+        - username: A username for authentication, if necessary.
+        - password: A password for authentication, if necessary.
+        - callback: The callback to pass the response to.
+ */
+internal func makePostRequest(
+    url: String,
+    params: [String: String],
+    username: String?,
+    password: String?,
+    callback: @escaping (DataResponse<Any>) -> Void
+) {
+    makeRequest(
+        method: HTTPMethod.post,
         url: url,
         params: params,
         username: username,
