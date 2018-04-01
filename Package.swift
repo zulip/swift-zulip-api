@@ -14,8 +14,8 @@ let package = Package(
         ),
         Target.testTarget(
             name: "ZulipSwiftTests",
-            path: "tests/ZulipSwift",
-            dependencies: ["ZulipSwift"]
+            dependencies: ["ZulipSwift"],
+            path: "tests/ZulipSwift"
         ),
     ]
 )
