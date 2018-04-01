@@ -1,6 +1,34 @@
 import Foundation
 import Alamofire
 
+private func makeRequest(
+    method: HTTPMethod,
+    url: String,
+    params: [String: String],
+    username: String?,
+    password: String?,
+    callback: @escaping (DataResponse<Any>) -> Void
+) {
+    let request = Alamofire.request(
+        url,
+        method: method,
+        parameters: params
+    )
+
+    let completionHandler = { (response: DataResponse<Any>) in
+        callback(response)
+    }
+
+    if let username = username, let password = password {
+        request.authenticate(
+            user: username,
+            password: password
+        ).responseJSON(completionHandler: completionHandler)
+    } else {
+        request.responseJSON(completionHandler: completionHandler)
+    }
+}
+
 /*:
     Makes an HTTP POST request.
 
