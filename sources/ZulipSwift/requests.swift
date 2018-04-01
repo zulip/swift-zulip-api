@@ -73,22 +73,12 @@ internal func makeGetRequest(
     password: String?,
     callback: @escaping (DataResponse<Any>) -> Void
 ) {
-    let request = Alamofire.request(
-        url,
+    makeRequest(
         method: HTTPMethod.get,
-        parameters: params
+        url: url,
+        params: params,
+        username: username,
+        password: password,
+        callback: callback
     )
-
-    let completionHandler = { (response: DataResponse<Any>) in
-        callback(response)
-    }
-
-    if let username = username, let password = password {
-        request.authenticate(
-            user: username,
-            password: password
-        ).responseJSON(completionHandler: completionHandler)
-    } else {
-        request.responseJSON(completionHandler: completionHandler)
-    }
 }
