@@ -34,7 +34,7 @@ private func makeRequest(
 
      - Parameters:
         - urlString: The URL to make the request to.
-        - params: The dictionary of parameters for the POST request's body.
+        - params: The dictionary of parameters for the GET request's query.
         - username: A username for authentication, if necessary.
         - password: A password for authentication, if necessary.
         - callback: The callback to pass the response to.
