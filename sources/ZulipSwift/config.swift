@@ -18,7 +18,7 @@ public class Config {
     init(
         emailAddress: String,
         apiKey: String,
-        realmURL: String,
+        realmURL: String
     ) {
         self.emailAddress = emailAddress
         self.apiKey = apiKey
