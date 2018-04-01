@@ -1,4 +1,5 @@
 import Foundation
+import Alamofire
 
 //: A type of Zulip message.
 public enum MessageType: String {
@@ -45,7 +46,7 @@ public class Messages {
         to: String,
         subject: String?,
         content: String,
-        callback: @escaping (Dictionary<String, Any>?) -> Void
+        callback: @escaping (DataResponse<Any>) -> Void
     ) {
         var params = [
             "type": messageType.rawValue,

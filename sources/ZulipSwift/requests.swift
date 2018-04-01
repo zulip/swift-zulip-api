@@ -16,7 +16,7 @@ internal func makePostRequest(
     params: [String: String],
     username: String?,
     password: String?,
-    callback: @escaping (Dictionary<String, Any>?) -> Void
+    callback: @escaping (DataResponse<Any>) -> Void
 ) {
     let request = Alamofire.request(
         url,
@@ -26,15 +26,7 @@ internal func makePostRequest(
     )
 
     let completionHandler = { (response: DataResponse<Any>) in
-        guard
-            let responseResult = response.result
-                as? Dictionary<String, Any>
-        else {
-            callback(nil)
-            return
-        }
-
-        callback(responseResult)
+        callback(response)
     }
 
     if let username = username, let password = password {
