@@ -9,11 +9,11 @@ public class Config {
     /*
         Initializes a Zulip configuration.
 
-        - Parameters:
-           - emailAddress: An email address that is signed up for Zulip.
-           - apiKey: An API key for a Zulip user.
-           - realmURL: The URL of a Zulip realm.
-             - Example: https://chat.zulip.org
+         - Parameters:
+            - emailAddress: An email address that is signed up for Zulip.
+            - apiKey: An API key for a Zulip user.
+            - realmURL: The URL of a Zulip realm.
+              - Example: https://chat.zulip.org
      */
     init(
         emailAddress: String,
