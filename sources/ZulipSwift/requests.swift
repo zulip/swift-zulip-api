@@ -27,14 +27,14 @@ internal func makePostRequest(
 
     let completionHandler = { (response: DataResponse<Any>) in
         guard
-            let responseValue = response.result.value
+            let responseResult = response.result
                 as? Dictionary<String, Any>
         else {
             callback(nil)
             return
         }
 
-        callback(responseValue)
+        callback(responseResult)
     }
 
     if let username = username, let password = password {
