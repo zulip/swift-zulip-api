@@ -163,6 +163,7 @@ public class Messages {
             )
         else {
             callback(nil, MessageError.invalidNarrow)
+            return
         }
 
         let params = [
