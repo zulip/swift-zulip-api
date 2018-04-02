@@ -71,13 +71,15 @@ public class Messages {
             - subject: The subject of the message.
             - content: The content of the message, which will be formatted by
               Zulip's Markdown engine on the backend.
+            - callback: A callback, which will be passed the ID of the new
+              message, or a `MessageError`.
      */
     func send(
         messageType: MessageType,
         to: String,
         subject: String?,
         content: String,
-        callback: @escaping (DataResponse<Any>) -> Void
+        callback: @escaping (Int?, MessageError?) -> Void
     ) {
         var params = [
             "type": messageType.rawValue,
@@ -94,7 +96,27 @@ public class Messages {
             params: params,
             username: config.emailAddress,
             password: config.apiKey,
-            callback: callback
+            callback: { (response) in
+                guard
+                    let id = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "id"
+                    ) as? Int
+                else {
+                    self.attemptToPassMessageError(
+                        response: response,
+                        callback: { messages, messageError in
+                            callback(
+                                messages as! Int?,
+                                messageError
+                            )
+                        }
+                    )
+                    return
+                }
+
+                callback(id, nil)
+            }
         )
     }
 
