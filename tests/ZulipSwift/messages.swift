@@ -41,6 +41,10 @@ class MessagesTests: XCTestCase {
             amountBefore: 13,
             amountAfter: 13,
             callback: { (response) in
+                XCTAssert(
+                    response.result.isSuccess,
+                    "`Messages.get` is not successful"
+                )
                 expectations[0].fulfill()
             }
         )
