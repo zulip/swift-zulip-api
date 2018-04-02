@@ -10,6 +10,12 @@ public enum MessageType: String {
     case privateMessage = "private"
 }
 
+//: An error that occurs during messaging.
+public enum MessageError: Error {
+    //: An error that occurs when a Zulip `narrow` is invalid.
+    case invalidNarrow
+}
+
 /*:
     A client for interacting with Zulip's messaging functionality.
  */
@@ -71,9 +77,8 @@ public class Messages {
         Gets messages.
 
          - Parameters:
-            - narrow: A JSON string of the Zulip narrow to search for messages
-              in. `narrow` should be an array of arrays consisting of filters
-              (represented by JSON).
+            - narrow: A Zulip narrow to search for messages in. `narrow`
+              should be an array of arrays consisting of filters.
                - Example: `[["is", "private"]]`
                - Example: `[["stream", "zulip-swift"]]`
                - Example: `[
@@ -92,14 +97,26 @@ public class Messages {
               `DataResponse`.
      */
     func get(
-        narrow: String,
+        narrow: [Any],
         anchor: Int,
         amountBefore: Int,
         amountAfter: Int,
         callback: @escaping (DataResponse<Any>) -> Void
-    ) {
+    ) throws {
+        guard
+            let narrowData = try? JSONSerialization.data(
+                withJSONObject: narrow
+            ),
+            let narrowString = String(
+                data: narrowData,
+                encoding: String.Encoding.utf8
+            )
+        else {
+            throw MessageError.invalidNarrow
+        }
+
         let params = [
-            "narrow": narrow,
+            "narrow": narrowString,
             "anchor": String(anchor),
             "num_before": String(amountBefore),
             "num_after": String(amountAfter)
