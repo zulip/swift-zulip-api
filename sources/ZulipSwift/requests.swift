@@ -109,3 +109,22 @@ internal func makePatchRequest(
         callback: callback
     )
 }
+
+/*
+    Gets a dictionary from an Alamofire JSON response.
+
+     - Parameters:
+        - response: The Alamofire JSON response.
+ */
+internal func getDictionaryFromJSONResponse(
+    response: DataResponse<Any>
+) -> Dictionary<String, Any>? {
+    guard
+        let responseValue = response.result.value,
+        let responseDictionary = responseValue as? Dictionary<String, Any>
+    else {
+        return nil
+    }
+
+    return responseDictionary
+}
