@@ -3,7 +3,8 @@ import XCTest
 
 class MessagesTests: XCTestCase {
     func testGet() throws {
-        guard let zulip = self.getZulip() else {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
             return
         }
 
