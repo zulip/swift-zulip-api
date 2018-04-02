@@ -93,4 +93,45 @@ class MessagesTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testUpdates() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [expectation(description: "`Messages.update`")]
+
+        zulip.messages().send(
+            messageType: MessageType.streamMessage,
+            to: "test here",
+            subject: "Test Message",
+            content: "Testing",
+            callback: { (response) in
+                guard
+                    let responseValue = response.result.value,
+                    let responseDictionary = responseValue
+                        as? Dictionary<String, Any>,
+                    let responseID = responseDictionary["id"] as? Int
+                else {
+                    XCTFail("`Message.send`'s response value was `nil`.'")
+                    return
+                }
+
+                zulip.messages().update(
+                    messageID: responseID,
+                    content: "Test Update",
+                    callback: { (response) in
+                        XCTAssert(
+                            response.result.isSuccess,
+                            "`Messages.update` is not successful"
+                        )
+                        expectations[0].fulfill()
+                    }
+                )
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
