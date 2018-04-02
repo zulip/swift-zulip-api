@@ -58,7 +58,7 @@ class MessagesTests: XCTestCase {
             return
         }
 
-        let expectations = [expectation(description: "`Messages.get`")]
+        let expectations = [expectation(description: "`Messages.render`")]
 
         zulip.messages().render(
             content: "Testing, **testing**, :smiley:.",
