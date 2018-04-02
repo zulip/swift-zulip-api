@@ -12,6 +12,12 @@ public enum MessageType: String {
 
 //: An error that occurs during messaging.
 public enum MessageError: Error {
+    //: An unexpected error that occurs without a message.
+    case unknownError
+
+    //: An error that is sent by Zulip, with an accompanying message.
+    case zulipError(errorMessage: String)
+
     //: An error that occurs when a Zulip `narrow` is invalid.
     case invalidNarrow
 }
@@ -30,6 +36,25 @@ public class Messages {
      */
     init(config: Config) {
         self.config = config
+    }
+
+    private func attemptToPassMessageError(
+        response: DataResponse<Any>,
+        callback: @escaping (Any?, MessageError?) -> Void
+    ) {
+        guard
+            let errorMessage = getChildFromJSONResponse(
+                response: response,
+                childKey: "msg"
+            ) as? String
+        else {
+            callback(nil, MessageError.unknownError)
+            return
+        }
+
+        callback(nil, MessageError.zulipError(
+            errorMessage: errorMessage
+        ))
     }
 
     /*
