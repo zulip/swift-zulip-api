@@ -44,10 +44,14 @@ class MessagesTests: XCTestCase {
             anchor: 391920,
             amountBefore: 13,
             amountAfter: 13,
-            callback: { (response) in
-                XCTAssert(
-                    response.result.isSuccess,
+            callback: { (messages, messageError) in
+                XCTAssertNotNil(
+                    messages,
                     "`Messages.get` is not successful"
+                )
+                XCTAssertNil(
+                    messageError,
+                    "`Messages.get` errors."
                 )
                 expectations[0].fulfill()
             }
