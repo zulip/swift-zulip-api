@@ -108,25 +108,21 @@ class MessagesTests: XCTestCase {
             to: "test here",
             subject: "Test Message",
             content: "Testing",
-            callback: { (response) in
-                guard
-                    let responseValue = response.result.value,
-                    let responseDictionary = responseValue
-                        as? Dictionary<String, Any>,
-                    let responseID = responseDictionary["id"] as? Int
-                else {
-                    XCTFail("`Message.send`'s response value was `nil`.'")
+            callback: { (id, messageError) in
+                guard let id = id else {
+                    XCTFail("`Message.send`'s `id` was `nil`.'")
                     return
                 }
 
                 zulip.messages().update(
-                    messageID: responseID,
+                    messageID: id,
                     content: "Test Update",
-                    callback: { (response) in
-                        XCTAssert(
-                            response.result.isSuccess,
-                            "`Messages.update` is not successful"
+                    callback: { (messageError) in
+                        XCTAssertNil(
+                            messageError,
+                            "`Messages.update` errors."
                         )
+
                         expectations[0].fulfill()
                     }
                 )
