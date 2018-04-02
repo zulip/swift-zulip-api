@@ -51,4 +51,26 @@ class MessagesTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testRender() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [expectation(description: "`Messages.get`")]
+
+        zulip.messages().render(
+            content: "Testing, **testing**, :smiley:.",
+            callback: { (response) in
+                XCTAssert(
+                    response.result.isSuccess,
+                    "`Messages.render` is not successful"
+                )
+                expectations[0].fulfill()
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
