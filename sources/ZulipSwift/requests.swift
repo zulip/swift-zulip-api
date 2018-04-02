@@ -128,3 +128,26 @@ internal func getDictionaryFromJSONResponse(
 
     return responseDictionary
 }
+
+
+/*
+    Gets a child from a dictionary from an Alamofire JSON response.
+
+     - Parameters:
+        - response: The Alamofire JSON response.
+        - childKey: The child key to get the value of.
+ */
+internal func getChildFromJSONResponse(
+    response: DataResponse<Any>,
+    childKey: String
+) -> Any? {
+    guard
+        let responseDictionary = getDictionaryFromJSONResponse(
+            response: response
+        )
+    else {
+        return nil
+    }
+
+    return responseDictionary[childKey]
+}
