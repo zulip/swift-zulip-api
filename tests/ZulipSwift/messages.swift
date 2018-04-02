@@ -31,7 +31,7 @@ class MessagesTests: XCTestCase {
         wait(for: expectations, timeout: 60)
     }
 
-    func testGet() throws {
+    func testGet() {
         guard let zulip = getZulip() else {
             XCTFail("Zulip could not be configured.")
             return
