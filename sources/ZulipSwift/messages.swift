@@ -152,7 +152,7 @@ public class Messages {
             Array<Dictionary<String, Any>>?,
             MessageError?
         ) -> Void
-    ) throws {
+    ) {
         guard
             let narrowData = try? JSONSerialization.data(
                 withJSONObject: narrow
@@ -162,7 +162,7 @@ public class Messages {
                 encoding: String.Encoding.utf8
             )
         else {
-            throw MessageError.invalidNarrow
+            callback(nil, MessageError.invalidNarrow)
         }
 
         let params = [
