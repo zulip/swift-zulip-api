@@ -67,6 +67,26 @@ class MessagesTests: XCTestCase {
                     response.result.isSuccess,
                     "`Messages.render` is not successful"
                 )
+
+                guard
+                    let responseValue = response.result.value,
+                    let responseDictionary = responseValue
+                        as? Dictionary<String, Any>,
+                    let responseRendered = responseDictionary["rendered"]
+                        as? String
+                else {
+                    XCTFail("`Message.render`'s response value was `nil`.'")
+                    return
+                }
+
+                XCTAssertEqual(
+                    "<p>Testing, <strong>testing</strong>, <span "
+                        + "class=\"emoji emoji-1f603\" title=\"smiley\">"
+                        + ":smiley:</span>.</p>",
+                    responseRendered,
+                    "`Messages.render` did not render correctly."
+                )
+
                 expectations[0].fulfill()
             }
         )
