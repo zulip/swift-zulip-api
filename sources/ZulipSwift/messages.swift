@@ -156,4 +156,31 @@ public class Messages {
             callback: callback
         )
     }
+
+    /*
+        Updates a message.
+
+         - Parameters:
+            - content: The content of the message, which will be formatted by
+              Zulip's Markdown engine on the backend.
+            - callback: A callback, which will be passed an Alamofire
+              `DataResponse`.
+     */
+    func update(
+        messageID: Int,
+        content: String,
+        callback: @escaping (DataResponse<Any>) -> Void
+    ) {
+        let params = [
+            "content": content,
+        ]
+
+        makePatchRequest(
+            url: self.config.apiURL + "/messages/" + String(messageID),
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: callback
+        )
+    }
 }
