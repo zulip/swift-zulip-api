@@ -140,15 +140,18 @@ public class Messages {
               to include.
             - amountAfter: The amount of messages after the `anchor` message
               to include.
-            - callback: A callback, which will be passed an Alamofire
-              `DataResponse`.
+            - callback: A callback, which will be passed the messages, or a
+              `MessageError`.
      */
     func get(
         narrow: [Any],
         anchor: Int,
         amountBefore: Int,
         amountAfter: Int,
-        callback: @escaping (DataResponse<Any>) -> Void
+        callback: @escaping (
+            Array<Dictionary<String, Any>>?,
+            MessageError?
+        ) -> Void
     ) throws {
         guard
             let narrowData = try? JSONSerialization.data(
@@ -174,7 +177,27 @@ public class Messages {
             params: params,
             username: config.emailAddress,
             password: config.apiKey,
-            callback: callback
+            callback: { (response) in
+                guard
+                    let messages = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "messages"
+                    ) as? Array<Dictionary<String, Any>>
+                else {
+                    self.attemptToPassMessageError(
+                        response: response,
+                        callback: { messages, messageError in
+                            callback(
+                                messages as! Array<Dictionary<String, Any>>?,
+                                messageError
+                            )
+                        }
+                    )
+                    return
+                }
+
+                callback(messages, nil)
+            }
         )
     }
 
