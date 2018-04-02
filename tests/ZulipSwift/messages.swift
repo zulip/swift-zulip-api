@@ -70,28 +70,21 @@ class MessagesTests: XCTestCase {
 
         zulip.messages().render(
             content: "Testing, **testing**, :smiley:.",
-            callback: { (response) in
-                XCTAssert(
-                    response.result.isSuccess,
+            callback: { (rendered, messageError) in
+                XCTAssertNotNil(
+                    rendered,
                     "`Messages.render` is not successful"
                 )
-
-                guard
-                    let responseValue = response.result.value,
-                    let responseDictionary = responseValue
-                        as? Dictionary<String, Any>,
-                    let responseRendered = responseDictionary["rendered"]
-                        as? String
-                else {
-                    XCTFail("`Message.render`'s response value was `nil`.'")
-                    return
-                }
+                XCTAssertNil(
+                    messageError,
+                    "`Messages.render` errors."
+                )
 
                 XCTAssertEqual(
                     "<p>Testing, <strong>testing</strong>, <span "
                         + "class=\"emoji emoji-1f603\" title=\"smiley\">"
                         + ":smiley:</span>.</p>",
-                    responseRendered,
+                    rendered,
                     "`Messages.render` did not render correctly."
                 )
 
