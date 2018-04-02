@@ -15,10 +15,14 @@ class MessagesTests: XCTestCase {
             to: "test here",
             subject: "Test Message",
             content: "Testing",
-            callback: { (response) in
-                XCTAssert(
-                    response.result.isSuccess,
+            callback: { (id, messageError) in
+                XCTAssertNotNil(
+                    id,
                     "`Messages.send` is not successful"
+                )
+                XCTAssertNil(
+                    messageError,
+                    "`Messages.send` errors."
                 )
                 expectations[0].fulfill()
             }
