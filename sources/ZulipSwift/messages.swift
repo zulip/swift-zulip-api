@@ -66,4 +66,51 @@ public class Messages {
             callback: callback
         )
     }
+
+    /*
+        Gets messages.
+
+         - Parameters:
+            - narrow: A JSON string of the Zulip narrow to search for messages
+              in. `narrow` should be an array of arrays consisting of filters
+              (represented by JSON).
+               - Example: `[["is", "private"]]`
+               - Example: `[["stream", "zulip-swift"]]`
+               - Example: `[
+                      ["stream", "zulip-swift"],
+                      ["sender", "theskunkmb@gmail.com"]
+                  ]`
+            - anchor: The ID of a message to start with. `anchor` can also be
+              an extremely large number in order to retrieve the newest message.
+               - Example: 130
+               - Example: 1000000000
+            - amountBefore: The amount of messages before the `anchor` message
+              to include.
+            - amountAfter: The amount of messages after the `anchor` message
+              to include.
+            - callback: A callback, which will be passed an Alamofire
+              `DataResponse`.
+     */
+    func get(
+        narrow: String,
+        anchor: Int,
+        amountBefore: Int,
+        amountAfter: Int,
+        callback: @escaping (DataResponse<Any>) -> Void
+    ) {
+        let params = [
+            "narrow": narrow,
+            "anchor": String(anchor),
+            "num_before": String(amountBefore),
+            "num_after": String(amountAfter)
+        ]
+
+        makeGetRequest(
+            url: self.config.apiURL + "/messages",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: callback
+        )
+    }
 }
