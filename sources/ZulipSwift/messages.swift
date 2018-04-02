@@ -207,12 +207,12 @@ public class Messages {
          - Parameters:
             - content: The content of the message, which will be formatted by
               Zulip's Markdown engine on the backend.
-            - callback: A callback, which will be passed an Alamofire
-              `DataResponse`.
+            - callback: A callback, which will be passed the rendered HTML
+              string, or a `MessageError`.
      */
     func render(
         content: String,
-        callback: @escaping (DataResponse<Any>) -> Void
+        callback: @escaping (String?, MessageError?) -> Void
     ) {
         let params = [
             "content": content,
@@ -223,7 +223,27 @@ public class Messages {
             params: params,
             username: config.emailAddress,
             password: config.apiKey,
-            callback: callback
+            callback: { (response) in
+                guard
+                    let rendered = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "rendered"
+                    ) as? String
+                else {
+                    self.attemptToPassMessageError(
+                        response: response,
+                        callback: { messages, messageError in
+                            callback(
+                                messages as! String?,
+                                messageError
+                            )
+                        }
+                    )
+                    return
+                }
+
+                callback(rendered, nil)
+            }
         )
     }
 
