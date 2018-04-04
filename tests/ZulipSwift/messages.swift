@@ -22,7 +22,8 @@ class MessagesTests: XCTestCase {
                 )
                 XCTAssertNil(
                     messageError,
-                    "`Messages.send` errors."
+                    "`Messages.send` errors: "
+                        + String(describing: messageError)
                 )
                 expectations[0].fulfill()
             }
@@ -39,7 +40,7 @@ class MessagesTests: XCTestCase {
 
         let expectations = [expectation(description: "`Messages.get`")]
 
-        try zulip.messages().get(
+        zulip.messages().get(
             narrow: [["stream", "test here"]],
             anchor: 391920,
             amountBefore: 13,
@@ -51,7 +52,8 @@ class MessagesTests: XCTestCase {
                 )
                 XCTAssertNil(
                     messageError,
-                    "`Messages.get` errors."
+                    "`Messages.get` errors: "
+                        + String(describing: messageError)
                 )
                 expectations[0].fulfill()
             }
@@ -77,7 +79,8 @@ class MessagesTests: XCTestCase {
                 )
                 XCTAssertNil(
                     messageError,
-                    "`Messages.render` errors."
+                    "`Messages.render` errors: "
+                        + String(describing: messageError)
                 )
 
                 XCTAssertEqual(
@@ -120,7 +123,8 @@ class MessagesTests: XCTestCase {
                     callback: { (messageError) in
                         XCTAssertNil(
                             messageError,
-                            "`Messages.update` errors."
+                            "`Messages.update` errors: "
+                                + String(describing: messageError)
                         )
 
                         expectations[0].fulfill()
