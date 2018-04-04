@@ -103,7 +103,8 @@ public class Messages {
                       ["sender", "theskunkmb@gmail.com"]
                   ]`
             - anchor: The ID of a message to start with. `anchor` can also be
-              an extremely large number in order to retrieve the newest message.
+              an extremely large number in order to retrieve the newest
+              message.
                - Example: 130
                - Example: 1000000000
             - amountBefore: The amount of messages before the `anchor` message
