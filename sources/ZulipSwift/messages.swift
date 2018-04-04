@@ -72,14 +72,14 @@ public class Messages {
             - content: The content of the message, which will be formatted by
               Zulip's Markdown engine on the backend.
             - callback: A callback, which will be passed the ID of the new
-              message, or a `MessageError`.
+              message, or an error.
      */
     func send(
         messageType: MessageType,
         to: String,
         subject: String?,
         content: String,
-        callback: @escaping (Int?, MessageError?) -> Void
+        callback: @escaping (Int?, Error?) -> Void
     ) {
         var params = [
             "type": messageType.rawValue,
@@ -103,14 +103,9 @@ public class Messages {
                         childKey: "id"
                     ) as? Int
                 else {
-                    self.attemptToPassMessageError(
-                        response: response,
-                        callback: { messages, messageError in
-                            callback(
-                                messages as! Int?,
-                                messageError
-                            )
-                        }
+                    callback(
+                        nil,
+                        (response: response)
                     )
                     return
                 }
@@ -140,8 +135,8 @@ public class Messages {
               to include.
             - amountAfter: The amount of messages after the `anchor` message
               to include.
-            - callback: A callback, which will be passed the messages, or a
-              `MessageError`.
+            - callback: A callback, which will be passed the messages, or an
+              error.
      */
     func get(
         narrow: [Any],
@@ -150,7 +145,7 @@ public class Messages {
         amountAfter: Int,
         callback: @escaping (
             Array<Dictionary<String, Any>>?,
-            MessageError?
+            Error?
         ) -> Void
     ) {
         guard
@@ -185,14 +180,9 @@ public class Messages {
                         childKey: "messages"
                     ) as? Array<Dictionary<String, Any>>
                 else {
-                    self.attemptToPassMessageError(
-                        response: response,
-                        callback: { messages, messageError in
-                            callback(
-                                messages as! Array<Dictionary<String, Any>>?,
-                                messageError
-                            )
-                        }
+                    callback(
+                        nil,
+                        getZulipErrorFromResponse(response: response)
                     )
                     return
                 }
@@ -209,11 +199,11 @@ public class Messages {
             - content: The content of the message, which will be formatted by
               Zulip's Markdown engine on the backend.
             - callback: A callback, which will be passed the rendered HTML
-              string, or a `MessageError`.
+              string, or an `Error`.
      */
     func render(
         content: String,
-        callback: @escaping (String?, MessageError?) -> Void
+        callback: @escaping (String?, Error?) -> Void
     ) {
         let params = [
             "content": content,
@@ -231,14 +221,9 @@ public class Messages {
                         childKey: "rendered"
                     ) as? String
                 else {
-                    self.attemptToPassMessageError(
-                        response: response,
-                        callback: { messages, messageError in
-                            callback(
-                                messages as! String?,
-                                messageError
-                            )
-                        }
+                    callback(
+                        nil,
+                        (response: response)
                     )
                     return
                 }
@@ -254,13 +239,13 @@ public class Messages {
          - Parameters:
             - content: The content of the message, which will be formatted by
               Zulip's Markdown engine on the backend.
-            - callback: A callback, which will be passed a `MessageError` if
+            - callback: A callback, which will be passed an Error if
               there is one.
      */
     func update(
         messageID: Int,
         content: String,
-        callback: @escaping (MessageError?) -> Void
+        callback: @escaping (Error?) -> Void
     ) {
         let params = [
             "content": content,
@@ -282,7 +267,7 @@ public class Messages {
                     return
                 }
 
-                callback(MessageError.zulipError(errorMessage: errorMessage))
+                callback(ZulipError.error(message: errorMessage))
             }
         )
     }
