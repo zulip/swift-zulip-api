@@ -68,4 +68,43 @@ public class Streams {
             }
         )
     }
+
+    /*:
+        Gets the ID of a stream.
+
+         - Parameters:
+            - name: The name of the stream.
+            - callback: A callback, which will be passed the ID, or an error.
+     */
+    func getID(
+        name: String,
+        callback: @escaping (Int?, Error?) -> Void
+    ) {
+        let params = [
+            "stream": name,
+        ]
+
+        makeGetRequest(
+            url: self.config.apiURL + "/get_stream_id",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                guard
+                    let id = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "stream_id"
+                    ) as? Int
+                else {
+                    callback(
+                        nil,
+                        getZulipErrorFromResponse(response: response)
+                    )
+                    return
+                }
+
+                callback(id, nil)
+            }
+        )
+    }
 }
