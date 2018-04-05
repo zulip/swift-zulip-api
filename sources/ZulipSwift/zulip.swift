@@ -16,6 +16,11 @@ public class Zulip {
         self.config = config
     }
 
+    /*
+        Returns a `Messages` client with the current `Config`.
+
+         - Returns: The `Messages` client.
+     */
     func messages() -> Messages {
         return Messages(config: self.config)
     }
