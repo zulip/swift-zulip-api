@@ -243,6 +243,11 @@ public class Messages {
                     return
                 }
 
+                if (errorMessage == "") {
+                    callback(nil)
+                    return
+                }
+
                 callback(ZulipError.error(message: errorMessage))
             }
         )
