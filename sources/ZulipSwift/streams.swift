@@ -5,7 +5,7 @@ import Alamofire
 public class Streams {
     private var config: Config
 
-    /*
+    /*:
         Initializes a `Streams` client.
 
          - Parameters:
@@ -15,7 +15,7 @@ public class Streams {
         self.config = config
     }
 
-    /*
+    /*:
         Gets all streams that a user can access.
 
          - Parameters:
