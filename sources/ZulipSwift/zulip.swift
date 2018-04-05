@@ -19,4 +19,13 @@ public class Zulip {
     func messages() -> Messages {
         return Messages(config: self.config)
     }
+
+    /*
+        Returns a `Streams` client with the current `Config`.
+
+         - Returns: The `Streams` client.
+     */
+    func streams() -> Streams {
+        return Streams(config: self.config)
+    }
 }
