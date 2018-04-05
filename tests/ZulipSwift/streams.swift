@@ -142,4 +142,34 @@ class StreamsTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testGetSubscribed() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [
+            expectation(description: "`Streams.getSubscribed`"),
+        ]
+
+        zulip.streams().getSubscribed(
+            callback: { (streams, error) in
+                XCTAssertNotNil(
+                    streams,
+                    "`Streams.getSubscribed` is not successful"
+                )
+                XCTAssertNil(
+                    error,
+                    "`Streams.getSubscribed` errors: "
+                        + String(describing: error)
+                )
+
+
+                expectations[0].fulfill()
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
