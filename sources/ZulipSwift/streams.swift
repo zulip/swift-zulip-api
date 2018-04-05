@@ -122,7 +122,7 @@ public class Streams {
         ) -> Void
     ) {
         makeGetRequest(
-            url: self.config.apiURL + "/subscriptions",
+            url: self.config.apiURL + "/users/me/subscriptions",
             params: [:],
             username: config.emailAddress,
             password: config.apiKey,
