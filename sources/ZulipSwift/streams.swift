@@ -39,10 +39,10 @@ public class Streams {
         ) -> Void
     ) {
         let params = [
-            "include_public": includePublic,
-            "include_subscribed": includeSubscribed,
-            "include_default": includeDefault,
-            "include_active": includeActive,
+            "include_public": includePublic ? "true" : "false",
+            "include_subscribed": includeSubscribed ? "true" : "false",
+            "include_default": includeDefault ? "true" : "false",
+            "include_active": includeActive ? "true" : "false",
         ]
 
         makeGetRequest(
