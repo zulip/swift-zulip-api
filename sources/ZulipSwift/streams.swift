@@ -107,4 +107,41 @@ public class Streams {
             }
         )
     }
+
+    /*:
+        Gets the user's subscribed streams.
+
+         - Parameters:
+            - callback: A callback, which will be passed the streams, or an
+              error.
+     */
+    func getSubscribed(
+        callback: @escaping (
+            Array<Dictionary<String, Any>>?,
+            Error?
+        ) -> Void
+    ) {
+        makeGetRequest(
+            url: self.config.apiURL + "/subscriptions",
+            params: [:],
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                guard
+                    let streams = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "subscriptions"
+                    ) as? Array<Dictionary<String, Any>>
+                else {
+                    callback(
+                        nil,
+                        getZulipErrorFromResponse(response: response)
+                    )
+                    return
+                }
+
+                callback(streams, nil)
+            }
+        )
+    }
 }
