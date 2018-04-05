@@ -32,7 +32,7 @@ public class Streams {
         includePublic: Bool = true,
         includeSubscribed: Bool = true,
         includeDefault: Bool = false,
-        includeActive: Bool = false,
+        includeAllActive: Bool = false,
         callback: @escaping (
             Array<Dictionary<String, Any>>?,
             Error?
@@ -42,7 +42,7 @@ public class Streams {
             "include_public": includePublic ? "true" : "false",
             "include_subscribed": includeSubscribed ? "true" : "false",
             "include_default": includeDefault ? "true" : "false",
-            "include_active": includeActive ? "true" : "false",
+            "include_all_active": includeAllActive ? "true" : "false",
         ]
 
         makeGetRequest(
