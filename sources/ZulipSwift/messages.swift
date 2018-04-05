@@ -80,7 +80,7 @@ public class Messages {
                 else {
                     callback(
                         nil,
-                        (response: response)
+                        getZulipErrorFromResponse(response: response)
                     )
                     return
                 }
@@ -199,7 +199,7 @@ public class Messages {
                 else {
                     callback(
                         nil,
-                        (response: response)
+                        getZulipErrorFromResponse(response: response)
                     )
                     return
                 }
