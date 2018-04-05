@@ -106,4 +106,40 @@ class StreamsTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testGetID() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [
+            expectation(description: "`Streams.getID`"),
+        ]
+
+        zulip.streams().getID(
+            name: "test here",
+            callback: { (id, error) in
+                XCTAssertNotNil(
+                    id,
+                    "`Streams.getID` is not successful"
+                )
+                XCTAssertNil(
+                    error,
+                    "`Streams.getID` errors: "
+                        + String(describing: error)
+                )
+
+                XCTAssertEqual(
+                    7,
+                    id,
+                    "`Streams.getID` did not get the correct ID."
+                )
+
+                expectations[0].fulfill()
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
