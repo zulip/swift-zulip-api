@@ -14,6 +14,7 @@ public enum ZulipError: Error {
 
      - Parameters:
         - response: An Alamofire `DataResponse` from a Zulip REST API request.
+     - Returns: The `ZulipError`.
  */
 internal func getZulipErrorFromResponse(
     response: DataResponse<Any>
