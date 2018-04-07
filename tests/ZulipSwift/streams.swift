@@ -201,4 +201,31 @@ class StreamsTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testUnsubscribe() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [expectation(description: "`Streams.unsubscribe`")]
+
+        zulip.streams().unsubscribe(
+            streamNames: ["test here"],
+            callback: { (unsubscribed, notSubscribed, error) in
+                XCTAssert(
+                    unsubscribed != nil || notSubscribed != nil,
+                    "`Streams.unsubscribe` is not successful"
+                )
+                XCTAssertNil(
+                    error,
+                    "`Streams.unsubscribe` errors: "
+                        + String(describing: error)
+                )
+                expectations[0].fulfill()
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
