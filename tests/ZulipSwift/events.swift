@@ -123,4 +123,48 @@ class EventsTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testGet() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [expectation(description: "`Events.get`")]
+
+        zulip.events().register(
+            eventTypes: ["messages"],
+            narrow: [["stream", "test here"]],
+            callback: { (queue, error) in
+                guard
+                    let queue = queue,
+                    let queueID = queue["queue_id"] as? String
+                else {
+                    XCTFail("`Events.register`'s `queue` was `nil`.'")
+                    return
+                }
+
+                zulip.events().get(
+                    queueID: queueID,
+                    lastEventID: -1,
+                    dontBlock: true,
+                    callback: { (events, error) in
+                        XCTAssertNotNil(
+                            events,
+                            "`Events.get` is not successful."
+                        )
+                        XCTAssertNil(
+                            error,
+                            "`Events.get` errors: "
+                                + String(describing: error)
+                        )
+
+                        expectations[0].fulfill()
+                    }
+                )
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
