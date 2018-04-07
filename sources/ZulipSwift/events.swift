@@ -58,9 +58,13 @@ public class Events {
             - fetchEventTypes: The same as `eventTypes`, but used to fetch
               initial data. If `fetchEventTypes` is not set, `eventTypes` is
               used, and if neither are set, then no events are used.
-            - narrow: A 2-item array of a narrow filter to recieve events from.
-               - Example: `["stream", "test here"]`
-               - Example: `["is", "private"]`
+            - narrow: A Zulip narrow to search for messages in. `narrow`
+              should be an array of arrays consisting of filters.
+               - Example: `[["stream", "test here"]]`
+               - Example: `[
+                     ["stream", "zulip-swift"],
+                     ["sender", "theskunkmb@gmail.com"]
+                 ]`
             - callback: A callback, which will be passed a dictionary
               containing `queue_id`, the ID of the new queue and
               `last_event_id`, the initial event ID to recieve an event with,
@@ -73,7 +77,7 @@ public class Events {
         allPublicStreams: Bool = false,
         includeSubscribers: Bool = false,
         fetchEventTypes: [String] = [],
-        narrow: [String] = [],
+        narrow: [[String]] = [[]],
         callback: @escaping ([String: Any]?, Error?) -> Void
     ) {
         guard
