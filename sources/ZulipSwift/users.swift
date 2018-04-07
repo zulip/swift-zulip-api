@@ -78,7 +78,7 @@ public class Users {
             password: config.apiKey,
             callback: { (response) in
                 guard
-                    var current = getDictionaryFromJSONResponse(
+                    var profile = getDictionaryFromJSONResponse(
                         response: response
                     )
                 else {
@@ -90,10 +90,10 @@ public class Users {
                 }
 
                 // These keys are unrelated to the actual profile.
-                current.removeValue(forKey: "msg")
-                current.removeValue(forKey: "result")
+                profile.removeValue(forKey: "msg")
+                profile.removeValue(forKey: "result")
 
-                callback(current, nil)
+                callback(profile, nil)
             }
         )
     }
