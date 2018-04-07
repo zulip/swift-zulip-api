@@ -216,4 +216,41 @@ public class Events {
             }
         )
     }
+
+    /*:
+        Deletes a queue.
+
+         - Parameters:
+            - queueID: The ID of the queue to delete.
+            - callback: A callback, which will be passed an error if there is
+              one.
+     */
+    func deleteQueue(
+        queueID: String,
+        callback: @escaping (Error?) -> Void
+    ) {
+        let params = [
+            "queue_id": queueID,
+        ]
+
+        makeDeleteRequest(
+            url: self.config.apiURL + "/events",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                if let errorMessage = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "msg"
+                ) as? String, errorMessage != "" {
+                    callback(
+                        ZulipError.error(message: errorMessage)
+                    )
+                    return
+                }
+
+                callback(nil)
+            }
+        )
+    }
 }
