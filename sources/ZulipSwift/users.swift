@@ -59,4 +59,42 @@ public class Users {
             }
         )
     }
+
+    /*:
+        Gets the current user's profile.
+
+         - Parameters:
+            - callback: A callback, which will be passed the profile, or an
+              error if there is one.
+     */
+    func getCurrent(
+        clientGravatar: Bool = false,
+        callback: @escaping ([String: Any]?, Error?) -> Void
+    ) {
+        makeGetRequest(
+            url: self.config.apiURL + "/users/me",
+            params: [:],
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                guard
+                    var current = getDictionaryFromJSONResponse(
+                        response: response
+                    )
+                else {
+                    callback(
+                        nil,
+                        getZulipErrorFromResponse(response: response)
+                    )
+                    return
+                }
+
+                // These keys are unrelated to the actual profile.
+                current.removeValue(forKey: "msg")
+                current.removeValue(forKey: "result")
+
+                callback(current, nil)
+            }
+        )
+    }
 }
