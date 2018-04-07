@@ -145,10 +145,10 @@ internal func makeDeleteRequest(
  */
 internal func getDictionaryFromJSONResponse(
     response: DataResponse<Any>
-) -> Dictionary<String, Any>? {
+) -> [String: Any]? {
     guard
         let responseValue = response.result.value,
-        let responseDictionary = responseValue as? Dictionary<String, Any>
+        let responseDictionary = responseValue as? [String: Any]
     else {
         return nil
     }
