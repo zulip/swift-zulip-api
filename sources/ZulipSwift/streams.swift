@@ -49,7 +49,7 @@ public class Streams {
         includeDefault: Bool = false,
         includeAllActive: Bool = false,
         callback: @escaping (
-            Array<Dictionary<String, Any>>?,
+            [Dictionary<String, Any>]?,
             Error?
         ) -> Void
     ) {
@@ -70,7 +70,7 @@ public class Streams {
                     let streams = getChildFromJSONResponse(
                         response: response,
                         childKey: "streams"
-                    ) as? Array<Dictionary<String, Any>>
+                    ) as? [Dictionary<String, Any>]
                 else {
                     callback(
                         nil,
@@ -132,7 +132,7 @@ public class Streams {
      */
     func getSubscribed(
         callback: @escaping (
-            Array<Dictionary<String, Any>>?,
+            [Dictionary<String, Any>]?,
             Error?
         ) -> Void
     ) {
@@ -146,7 +146,7 @@ public class Streams {
                     let streams = getChildFromJSONResponse(
                         response: response,
                         childKey: "subscriptions"
-                    ) as? Array<Dictionary<String, Any>>
+                    ) as? [Dictionary<String, Any>]
                 else {
                     callback(
                         nil,
@@ -182,15 +182,15 @@ public class Streams {
               because the user was unauthorized; or an error if there is one.
      */
     func subscribe(
-        streams: Array<Dictionary<String, Any>>,
+        streams: [Dictionary<String, Any>],
         inviteOnly: Bool = false,
         announce: Bool = false,
         principals: [String] = [],
         authorizationErrorsFatal: Bool = true,
         callback: @escaping (
-            Dictionary<String, Array<String>>?,
-            Dictionary<String, Array<String>>?,
-            Array<String>?,
+            Dictionary<String, [String>]?,
+            Dictionary<String, [String>]?,
+            [String]?,
             Error?
         ) -> Void
     ) {
@@ -251,15 +251,15 @@ public class Streams {
                 let subscribed = getChildFromJSONResponse(
                     response: response,
                     childKey: "subscribed"
-                ) as? Dictionary<String, Array<String>>
+                ) as? Dictionary<String, [String>]
                 let alreadySubscribed = getChildFromJSONResponse(
                     response: response,
                     childKey: "already_subscribed"
-                ) as? Dictionary<String, Array<String>>
+                ) as? Dictionary<String, [String>]
                 let unauthorized = getChildFromJSONResponse(
                     response: response,
                     childKey: "unauthorized"
-                ) as? Array<String>
+                ) as? [String]
 
                 callback(subscribed, alreadySubscribed, unauthorized, nil)
             }
@@ -286,8 +286,8 @@ public class Streams {
         streamNames: [String],
         principals: [String] = [],
         callback: @escaping (
-            Array<String>?,
-            Array<String>?,
+            [String]?,
+            [String]?,
             Error?
         ) -> Void
     ) {
@@ -343,11 +343,11 @@ public class Streams {
                 let removed = getChildFromJSONResponse(
                     response: response,
                     childKey: "removed"
-                ) as? Array<String>
+                ) as? [String]
                 let notSubscribed = getChildFromJSONResponse(
                     response: response,
                     childKey: "not_subscribed"
-                ) as? Array<String>
+                ) as? [String]
 
                 callback(removed, notSubscribed, nil)
             }
