@@ -89,3 +89,95 @@ Unsubscribes a user from streams.
       because the user was already subscribed,
 
    or an error if there is one.
+
+## Examples
+
+### streams.getAll
+
+```swift
+streams.getAll(
+    includePublic: true,
+    includeSubscribed: true,
+    includeDefault: false,
+    includeActive: false,
+    callback: { (streams, error) in
+        // Prints a list of streams with various properties.
+        print(streams)
+    }
+)
+```
+
+### streams.getID
+
+```swift
+streams.getID(
+    name: "test here",
+    callback: { (id, error) in
+        // Prints a number, like 13.
+        print(streams)
+    }
+)
+```
+
+### streams.getSubscribed
+
+```swift
+streams.getSubscribed(
+    callback: { (streams, error) in
+        // Prints a list of streams with various properties.
+        print(streams)
+    }
+)
+```
+
+### streams.subscribe
+
+```swift
+streams.subscribe(
+    streams: [["name": "test here"]],
+    principals: ["user1@example.com", "user2@example.com"]
+    callback: { (subscribed, alreadySubscribed, unauthorized, error) in
+        // Prints something like
+        //
+        //     [
+        //         "user1@example.com": "test here"
+        //     ]
+        print(subscribed)
+
+        // Prints something like
+        //
+        //     [
+        //         "user2@example.com": "test here"
+        //     ]
+
+        print(alreadySubscribed)
+
+        // Prints something like
+        //
+        //     []
+        //
+        // if no streams are unauthorized.
+        print(unauthorized)
+    }
+)
+```
+
+### streams.unsubscribe
+
+```swift
+streams.subscribe(
+    streamsNames: ["test here", "announce"],
+    principals: ["user1@example.com", "user2@example.com"]
+    callback: { (unsubscribed, notSubscribed, error) in
+        // Prints something like
+        //
+        //     ["test here"]
+        print(unsubscribed)
+
+        // Prints something like
+        //
+        //     ["announce"]
+        print(notSubscribed)
+    }
+)
+```
