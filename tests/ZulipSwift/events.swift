@@ -28,7 +28,6 @@ class EventsTests: XCTestCase {
             eventTypes: ["messages"],
             narrow: [["stream", "test here"]],
             callback: { (queue, error) in
-                print(queue)
                 XCTAssertNotNil(
                     queue,
                     "`Events.register` is not successful"
@@ -48,7 +47,6 @@ class EventsTests: XCTestCase {
             eventTypes: ["messages"],
             narrow: [["stream", "test here"]],
             callback: { (queue, error) in
-                print(queue)
                 XCTAssertNotNil(
                     queue,
                     "`Events.register` `applyMarkdown: true` is not successful"
@@ -68,7 +66,6 @@ class EventsTests: XCTestCase {
             eventTypes: ["messages"],
             narrow: [["stream", "test here"]],
             callback: { (queue, error) in
-                print(queue)
                 XCTAssertNotNil(
                     queue,
                     "`Events.register` `clientGravatar: true` is not "
@@ -89,7 +86,6 @@ class EventsTests: XCTestCase {
             allPublicStreams: true,
             narrow: [["stream", "test here"]],
             callback: { (queue, error) in
-                print(queue)
                 XCTAssertNotNil(
                     queue,
                     "`Events.register` `allPublicStreams: true` is not "
@@ -110,7 +106,6 @@ class EventsTests: XCTestCase {
             includeSubscribers: true,
             narrow: [["stream", "test here"]],
             callback: { (queue, error) in
-                print(queue)
                 XCTAssertNotNil(
                     queue,
                     "`Events.register` `includeSubscribers: true` is not "
