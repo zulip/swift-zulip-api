@@ -182,6 +182,7 @@ class StreamsTests: XCTestCase {
         let expectations = [expectation(description: "`Streams.subscribe`")]
 
         zulip.streams().subscribe(
+            streams: [["name": "test here"]],
             callback: { (subscribed, alreadySubscribed, unauthorized, error) in
                 XCTAssert(
                     subscribed != nil
