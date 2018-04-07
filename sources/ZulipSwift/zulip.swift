@@ -39,7 +39,7 @@ public class Zulip {
 
          - Returns: The `Users` client.
      */
-    func users() -> Streams {
+    func users() -> Users {
         return Users(config: self.config)
     }
 }
