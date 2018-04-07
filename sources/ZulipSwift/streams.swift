@@ -11,6 +11,9 @@ public enum StreamError: Error {
 
     //: An error that occurs when a list of Zulip principals is invalid.
     case invalidPrincipals
+
+    //: An error that occurs when a list of Zulip stream names is invalid.
+    case invalidStreamNames
 }
 
 //: A client for interacting with Zulip's messaging functionality.
@@ -259,6 +262,94 @@ public class Streams {
                 ) as? Array<String>
 
                 callback(subscribed, alreadySubscribed, unauthorized, nil)
+            }
+        )
+    }
+
+    /*:
+        Unsubscribes a user to streams.
+
+         - Parameters:
+            - streamNames: The names of the streams to unsubscribe a user from.
+               - Example: `["test here"]`
+               - Example: `["test here", "announce"]`
+            - principals: The users to unsubscribe from the streams. If
+              `principals` is empty, the current user will be subscribed.
+              Unsubscribing other users will cause a `ZulipError` if the
+              current user is not an admin.
+            - callback: A callback, which will be passed a list of names of
+              the streams that were unsubscribed from and a list of names of
+              the streams that could not be unsubscrived from because the user
+              was already subscribed, or an error if there is one.
+     */
+    func unsubscribe(
+        streamNames: [String],
+        principals: [String] = [],
+        callback: @escaping (
+            Array<String>?,
+            Array<String>?,
+            Error?
+        ) -> Void
+    ) {
+        guard
+            let streamNamesData = try? JSONSerialization.data(
+                withJSONObject: streamNames
+            ),
+            let streamNamesString = String(
+                data: streamNamesData,
+                encoding: String.Encoding.utf8
+            )
+        else {
+            callback(nil, nil, nil, StreamError.invalidStreamNames)
+            return
+        }
+
+        guard
+            let principalsData = try? JSONSerialization.data(
+                withJSONObject: principals
+            ),
+            let principalsString = String(
+                data: principalsData,
+                encoding: String.Encoding.utf8
+            )
+        else {
+            callback(nil, nil, nil, StreamError.invalidPrincipals)
+            return
+        }
+
+        let params = [
+            "subscriptions": streamNamesString,
+            "principals": principalsString,
+        ]
+
+        makeDeleteRequest(
+            url: self.config.apiURL + "/users/me/subscriptions",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                if let errorMessage = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "msg"
+                ) as? String, errorMessage != "" {
+                    callback(
+                        nil,
+                        nil,
+                        ZulipError.error(message: errorMessage)
+                    )
+                    return
+                }
+
+                let removed = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "removed"
+                ) as? Array<String>
+                let notSubscribed = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "not_subscribed"
+                ) as? Array<String>
+
+                callback(removed, notSubscribed, nil)
             }
         )
     }
