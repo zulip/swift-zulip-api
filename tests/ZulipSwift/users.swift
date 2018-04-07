@@ -57,4 +57,33 @@ class UsersTests: XCTestCase {
 
         wait(for: expectations, timeout: 60)
     }
+
+    func testCreate() {
+        guard let zulip = getZulip() else {
+            XCTFail("Zulip could not be configured.")
+            return
+        }
+
+        let expectations = [expectation(description: "`Users.create`")]
+        let email = zulip.config.emailAddress
+        let password = zulip.config.apiKey
+
+        zulip.users().create(
+            email: email,
+            password: password,
+            fullName: "Test User",
+            shortName: "testuser",
+            callback: { (error) in
+                // It should error, because the email has already been taken.
+                XCTAssertNotNil(
+                    error,
+                    "`Users.testCreate` does not error."
+                )
+
+                expectations[0].fulfill()
+            }
+        )
+
+        wait(for: expectations, timeout: 60)
+    }
 }
