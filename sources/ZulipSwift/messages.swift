@@ -120,7 +120,7 @@ public class Messages {
         amountBefore: Int,
         amountAfter: Int,
         callback: @escaping (
-            [Dictionary<String, Any>]?,
+            [[String: Any]]?,
             Error?
         ) -> Void
     ) {
@@ -154,7 +154,7 @@ public class Messages {
                     let messages = getChildFromJSONResponse(
                         response: response,
                         childKey: "messages"
-                    ) as? [Dictionary<String, Any>]
+                    ) as? [[String: Any]]
                 else {
                     callback(
                         nil,
