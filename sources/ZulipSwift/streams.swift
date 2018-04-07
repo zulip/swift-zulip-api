@@ -49,7 +49,7 @@ public class Streams {
         includeDefault: Bool = false,
         includeAllActive: Bool = false,
         callback: @escaping (
-            [Dictionary<String, Any>]?,
+            [[String: Any]]?,
             Error?
         ) -> Void
     ) {
@@ -70,7 +70,7 @@ public class Streams {
                     let streams = getChildFromJSONResponse(
                         response: response,
                         childKey: "streams"
-                    ) as? [Dictionary<String, Any>]
+                    ) as? [[String: Any]]
                 else {
                     callback(
                         nil,
@@ -132,7 +132,7 @@ public class Streams {
      */
     func getSubscribed(
         callback: @escaping (
-            [Dictionary<String, Any>]?,
+            [[String: Any]]?,
             Error?
         ) -> Void
     ) {
@@ -146,7 +146,7 @@ public class Streams {
                     let streams = getChildFromJSONResponse(
                         response: response,
                         childKey: "subscriptions"
-                    ) as? [Dictionary<String, Any>]
+                    ) as? [[String: Any]]
                 else {
                     callback(
                         nil,
@@ -182,14 +182,14 @@ public class Streams {
               because the user was unauthorized; or an error if there is one.
      */
     func subscribe(
-        streams: [Dictionary<String, Any>],
+        streams: [[String: Any]],
         inviteOnly: Bool = false,
         announce: Bool = false,
         principals: [String] = [],
         authorizationErrorsFatal: Bool = true,
         callback: @escaping (
-            Dictionary<String, [String>]?,
-            Dictionary<String, [String>]?,
+            [String: [String]]?,
+            [String: [String]]?,
             [String]?,
             Error?
         ) -> Void
@@ -251,11 +251,11 @@ public class Streams {
                 let subscribed = getChildFromJSONResponse(
                     response: response,
                     childKey: "subscribed"
-                ) as? Dictionary<String, [String>]
+                ) as? [String: [String]]
                 let alreadySubscribed = getChildFromJSONResponse(
                     response: response,
                     childKey: "already_subscribed"
-                ) as? Dictionary<String, [String>]
+                ) as? [String: [String]]
                 let unauthorized = getChildFromJSONResponse(
                     response: response,
                     childKey: "unauthorized"
