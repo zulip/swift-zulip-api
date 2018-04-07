@@ -33,4 +33,13 @@ public class Zulip {
     func streams() -> Streams {
         return Streams(config: self.config)
     }
+
+    /*:
+        Returns a `Users` client with the current `Config`.
+
+         - Returns: The `Users` client.
+     */
+    func users() -> Streams {
+        return Users(config: self.config)
+    }
 }
