@@ -131,6 +131,17 @@ public class Events {
             username: config.emailAddress,
             password: config.apiKey,
             callback: { (response) in
+                if let errorMessage = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "msg"
+                ) as? String, errorMessage != "" {
+                    callback(
+                        nil,
+                        ZulipError.error(message: errorMessage)
+                    )
+                    return
+                }
+
                 guard
                     var queue = getDictionaryFromJSONResponse(
                         response: response
