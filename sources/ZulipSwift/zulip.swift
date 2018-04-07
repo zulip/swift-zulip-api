@@ -42,4 +42,13 @@ public class Zulip {
     func users() -> Users {
         return Users(config: self.config)
     }
+
+    /*:
+        Returns an `Events` client with the current `Config`.
+
+         - Returns: The `Events` client.
+     */
+    func events() -> Events {
+        return Events(config: self.config)
+    }
 }
