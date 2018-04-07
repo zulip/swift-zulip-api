@@ -97,4 +97,51 @@ public class Users {
             }
         )
     }
+
+    /*:
+        Creates a new user. `create` will send a `ZulipError` if the user not
+        an admin.
+
+         - Parameters:
+            - email: The new user's email address.
+            - password: The new user's password.
+            - fullName: The new user's full name.
+            - shortName: The new user's short name.
+            - callback: A callback, which will be passed an error if there is
+              one.
+     */
+    func create(
+        email: String,
+        password: String,
+        fullName: String,
+        shortName: String,
+        callback: @escaping (Error?) -> Void
+    ) {
+        let params = [
+            "email": email,
+            "password": password,
+            "full_name": fullName,
+            "short_name": shortName,
+        ]
+
+        makePostRequest(
+            url: self.config.apiURL + "/users",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                if let errorMessage = getChildFromJSONResponse(
+                    response: response,
+                    childKey: "msg"
+                ) as? String, errorMessage != "" {
+                    callback(
+                        ZulipError.error(message: errorMessage)
+                    )
+                    return
+                }
+
+                callback(nil)
+            }
+        )
+    }
 }
