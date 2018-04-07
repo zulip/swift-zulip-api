@@ -300,7 +300,7 @@ public class Streams {
                 encoding: String.Encoding.utf8
             )
         else {
-            callback(nil, nil, nil, StreamError.invalidStreamNames)
+            callback(nil, nil, StreamError.invalidStreamNames)
             return
         }
 
@@ -313,7 +313,7 @@ public class Streams {
                 encoding: String.Encoding.utf8
             )
         else {
-            callback(nil, nil, nil, StreamError.invalidPrincipals)
+            callback(nil, nil, StreamError.invalidPrincipals)
             return
         }
 
