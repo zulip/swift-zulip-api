@@ -62,3 +62,66 @@ Updates a message.
 
  - content: The new content of the message.
  - callback: A callback, which will be passed an error if there is one.
+
+## Examples
+
+### messages.send
+
+```swift
+messages.send(
+    messageType: MessageType.streamMessage,
+    to: "test here",
+    subject: "Test Message",
+    content: "Testing",
+    callback: { (id, error) in
+        // Prints a number like 13000.
+        print(id)
+    }
+)
+```
+
+### messages.get
+
+```swift
+messages.get(
+    narrow: [
+        ["stream", "zulip-swift"],
+        ["sender", "theskunkmb@gmail.com"],
+    ],
+    anchor: 13000,
+    amountBefore: 16,
+    amountAfter: 8,
+    callback: { (messages, error) in
+        // Prints a long list of messages with various properties.
+        print(messages)
+    }
+)
+```
+
+### messages.render
+
+```swift
+messages.get(
+    content: "Testing, **testing**, :smiley:.",
+    callback: { (rendered, error) in
+        // Prints the following string (without newlines and whitespace):
+        //
+        //     <p>Testing, <strong>testing</strong>,
+        //     <span class=\"emoji emoji-1f603\" title=\"smiley\">
+        //     :smiley:</span>.</p>
+        print(rendered)
+    }
+)
+```
+
+### messages.update
+
+```swift
+messages.get(
+    messageID: 13000,
+    content: "Test Update",
+    callback: { (error) in
+        // The message has now been updated.
+    }
+)
+```
