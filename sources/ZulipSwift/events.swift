@@ -19,7 +19,7 @@ public enum EventError: Error {
 public class Events {
     private var config: Config
 
-    /*
+    /*:
         Initializes an Events client.
 
          - Parameters:

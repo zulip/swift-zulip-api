@@ -9,7 +9,7 @@ public enum ZulipError: Error {
     case error(message: String)
 }
 
-/*
+/*:
     Makes a `ZulipError` based on an Alamofire `DataResponse`.
 
      - Parameters:

@@ -137,7 +137,7 @@ internal func makeDeleteRequest(
     )
 }
 
-/*
+/*:
     Gets a dictionary from an Alamofire JSON response.
 
      - Parameters:
@@ -157,7 +157,7 @@ internal func getDictionaryFromJSONResponse(
 }
 
 
-/*
+/*:
     Gets a child from a dictionary from an Alamofire JSON response.
 
      - Parameters:

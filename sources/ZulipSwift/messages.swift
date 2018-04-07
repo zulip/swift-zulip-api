@@ -22,7 +22,7 @@ public enum MessageError: Error {
 public class Messages {
     private var config: Config
 
-    /*
+    /*:
         Initializes a Messaging client.
 
          - Parameters:
@@ -32,7 +32,7 @@ public class Messages {
         self.config = config
     }
 
-    /*
+    /*:
         Sends a message.
 
          - Parameters:
@@ -90,7 +90,7 @@ public class Messages {
         )
     }
 
-    /*
+    /*:
         Gets messages.
 
          - Parameters:
@@ -168,7 +168,7 @@ public class Messages {
         )
     }
 
-    /*
+    /*:
         Renders a message.
 
          - Parameters:
@@ -209,7 +209,7 @@ public class Messages {
         )
     }
 
-    /*
+    /*:
         Updates a message.
 
          - Parameters:

@@ -15,7 +15,7 @@ public class Config {
      */
     public var apiURL: String
 
-    /*
+    /*:
         Initializes a Zulip configuration.
 
          - Parameters:

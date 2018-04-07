@@ -7,7 +7,7 @@ import Alamofire
 public class Users {
     private var config: Config
 
-    /*
+    /*:
         Initializes a Users client.
 
          - Parameters:

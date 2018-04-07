@@ -6,7 +6,7 @@ public class Zulip {
     //: The Zulip `Config` that is used.
     public var config: Config
 
-    /*
+    /*:
         Initializes a Zulip client.
 
          - Parameters:
@@ -16,7 +16,7 @@ public class Zulip {
         self.config = config
     }
 
-    /*
+    /*:
         Returns a `Messages` client with the current `Config`.
 
          - Returns: The `Messages` client.
@@ -25,7 +25,7 @@ public class Zulip {
         return Messages(config: self.config)
     }
 
-    /*
+    /*:
         Returns a `Streams` client with the current `Config`.
 
          - Returns: The `Streams` client.
