@@ -110,6 +110,33 @@ internal func makePatchRequest(
     )
 }
 
+/*:
+    Makes an HTTP DELETE request.
+
+     - Parameters:
+        - urlString: The URL to make the request to.
+        - params: The dictionary of parameters for the POST request's body.
+        - username: A username for authentication, if necessary.
+        - password: A password for authentication, if necessary.
+        - callback: The callback to pass the response to.
+ */
+internal func makeDeleteRequest(
+    url: String,
+    params: [String: String],
+    username: String?,
+    password: String?,
+    callback: @escaping (DataResponse<Any>) -> Void
+) {
+    makeRequest(
+        method: HTTPMethod.delete,
+        url: url,
+        params: params,
+        username: username,
+        password: password,
+        callback: callback
+    )
+}
+
 /*
     Gets a dictionary from an Alamofire JSON response.
 
