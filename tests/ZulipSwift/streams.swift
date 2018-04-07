@@ -192,7 +192,7 @@ class StreamsTests: XCTestCase {
                 )
                 XCTAssertNil(
                     error,
-                    "`Streams.getAll` errors: "
+                    "`Streams.subscribe` errors: "
                         + String(describing: error)
                 )
                 expectations[0].fulfill()
