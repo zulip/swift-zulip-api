@@ -12,15 +12,15 @@ class UsersTests: XCTestCase {
 
         zulip.users().getAll(
             clientGravatar: false,
-            callback: { (members, messageError) in
+            callback: { (members, error) in
                 XCTAssertNotNil(
                     members,
                     "`Users.getAll` is not successful"
                 )
                 XCTAssertNil(
-                    messageError,
+                    error,
                     "`Users.getAll` errors: "
-                        + String(describing: messageError)
+                        + String(describing: error)
                 )
 
                 expectations[0].fulfill()
@@ -40,15 +40,15 @@ class UsersTests: XCTestCase {
 
         zulip.users().getCurrent(
             clientGravatar: false,
-            callback: { (profile, messageError) in
+            callback: { (profile, error) in
                 XCTAssertNotNil(
                     profile,
                     "`Users.getCurrent` is not successful"
                 )
                 XCTAssertNil(
-                    messageError,
+                    error,
                     "`Users.getCurrent` errors: "
-                        + String(describing: messageError)
+                        + String(describing: error)
                 )
 
                 expectations[0].fulfill()
