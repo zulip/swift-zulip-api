@@ -5,3 +5,19 @@ A library to access the Zulip API with **Swift**.
 ## Installation
 
 TODO: Fill in this section once `zulip-swift` is published.
+
+## Usage
+
+### Set-up
+
+```swift
+// Set up a Zulip configuration.
+let config = Config(
+    emailAddress: "email@example.com",
+    apiKey: "yourapikey",
+    realmURL: "https://example.com"
+)
+
+// Create the Zulip client.
+let zulip = Zulip(config: config)
+```
