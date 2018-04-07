@@ -166,4 +166,54 @@ public class Events {
             }
         )
     }
+
+    /*:
+        Gets events from a queue.
+
+         - Parameters:
+            - queueID: The ID of the queue to get events from.
+            - lastEventID: The last event ID to acknowledge. Events after the
+              event with the `lastEventID` ID will be sent. `-1` can be used to
+              recieve all events.
+            - dontBlock: Whether the response should be nonblocking. If
+              `false`, the response will be sent after a new event is available
+              or after a few minutes as a heartbeat.
+            - callback: A callback, which will be passed a list of events, or
+              an error, if there is one.
+     */
+    func get(
+        queueID: String,
+        lastEventID: Int,
+        dontBlock: Bool = false,
+        callback: @escaping ([[String: Any]]?, Error?) -> Void
+    ) {
+        let params = [
+            "queue_id": queueID,
+            "last_event_id": String(lastEventID),
+            "dont_block": dontBlock ? "true" : "false"
+        ]
+
+        makeGetRequest(
+            url: self.config.apiURL + "/events",
+            params: params,
+            username: config.emailAddress,
+            password: config.apiKey,
+            callback: { (response) in
+                guard
+                    let events = getChildFromJSONResponse(
+                        response: response,
+                        childKey: "events"
+                    ) as? [[String: Any]]
+                else {
+                    callback(
+                        nil,
+                        getZulipErrorFromResponse(response: response)
+                    )
+                    return
+                }
+
+                callback(events, nil)
+            }
+        )
+    }
 }
