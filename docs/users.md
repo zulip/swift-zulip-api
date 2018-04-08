@@ -41,3 +41,44 @@ admin.
  - `shortName`: The new user's short name.
  - `callback`: A callback, which will be passed an error if there is
    one.
+
+## Examples
+
+### users.getAll
+
+```swift
+users.getAll(
+    clientGravatar: false,
+    callback: { (users, error) in
+        // Prints a list of current users.
+        print(users)
+    }
+ )
+```
+
+### users.getCurrent
+
+```swift
+users.getCurrent(
+    clientGravatar: false,
+    callback: { (profile, error) in
+        // Prints the current user's profile.
+        print(profile)
+    }
+ )
+```
+
+### users.create
+
+```swift
+users.getCurrent(
+    email: "user@example.com",
+    password: "somepassword",
+    fullName: "Test User",
+    shortName: "testuser",
+    callback: { (error) in
+        // A user has been created, if the user is an admin. Otherwise, `error`
+        // will not be `nil`.
+    }
+ )
+```
