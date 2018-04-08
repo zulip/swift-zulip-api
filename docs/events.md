@@ -72,3 +72,48 @@ Deletes a queue.
  - `queueID`: The ID of the queue to delete.
  - `callback`: A callback, which will be passed an error if there is
    one.
+
+## Examples
+
+### events.register
+
+```swift
+events.register(
+    applyMarkdown: false,
+    clientGravatar: false,
+    eventTypes: ["messages"],
+    allPublicStreams: false,
+    includeSubscribers: false,
+    narrow: [["stream", "test here"]],
+    callback: { (queue, error) in
+        // Prints the queue dictionary, containing `queue_id` and
+        // `last_event_id`.
+        print(queue)
+    }
+)
+```
+
+### events.get
+
+```swift
+events.register(
+    queueID: 1300,
+    lastEventID: 8,
+    dontBlock: true,
+    callback: { (events, error) in
+        // Prints the events array.
+        print(events)
+    }
+)
+```
+
+### events.deleteQueue
+
+```swift
+events.register(
+    queueID: 1301,
+    callback: { (error) in
+        // The queue has now been deleted.
+    }
+)
+```
