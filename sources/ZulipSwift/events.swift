@@ -39,7 +39,7 @@ public class Events {
               does not have an avatar. (`true` means that `avatar_url` will be
               `nil` if the user does not have an avatar; `false` means that an
               `avatar_url` will be a Gravatar).
-            - eventTypes: The types of events to recieve, or an empty array
+            - eventTypes: The types of events to receive, or an empty array
               for all events.
                - Example: `["messages"]` for new messages
                - Example: `["subscriptions"]` for changes in the current user's
@@ -51,9 +51,9 @@ public class Events {
                - Example: `["subscriptions", "pointer"]` for a combination of
                  multiple events
                - Example: `[]` for all events
-            - allPublicStreams: Whether events should be recieved from all
+            - allPublicStreams: Whether events should be received from all
               public streams.
-            - includeSubscribers: Whether events should be recieved for the
+            - includeSubscribers: Whether events should be received for the
               subscribers of each stream.
             - fetchEventTypes: The same as `eventTypes`, but used to fetch
               initial data. If `fetchEventTypes` is not set, `eventTypes` is
@@ -67,7 +67,7 @@ public class Events {
                  ]`
             - callback: A callback, which will be passed a dictionary
               containing `queue_id`, the ID of the new queue and
-              `last_event_id`, the initial event ID to recieve an event with,
+              `last_event_id`, the initial event ID to receive an event with,
               or an error if there is one.
      */
     func register(
@@ -174,7 +174,7 @@ public class Events {
             - queueID: The ID of the queue to get events from.
             - lastEventID: The last event ID to acknowledge. Events after the
               event with the `lastEventID` ID will be sent. `-1` can be used to
-              recieve all events.
+              receive all events.
             - dontBlock: Whether the response should be nonblocking. If
               `false`, the response will be sent after a new event is available
               or after a few minutes as a heartbeat.
