@@ -49,25 +49,25 @@ functions:
 let messages = zulip.messages()
 ```
 
-[See the full `messages` docs.](docs/messages)
+[See the full `messages` docs.](docs/messages.md)
 
 **streams:**
 ```swift
 let streams = zulip.streams()
 ```
 
-[See the full `streams` docs.](docs/streams)
+[See the full `streams` docs.](docs/streams.md)
 
 **users:**
 ```swift
 let users = zulip.users()
 ```
 
-[See the full `users` docs.](docs/users)
+[See the full `users` docs.](docs/users.md)
 
 **events:**
 ```swift
 let events = zulip.events()
 ```
 
-[See the full `events` docs.](docs/events)
+[See the full `events` docs.](docs/events.md)
