@@ -1,5 +1,9 @@
 # `zulip-swift` <img alt="Swift logo" src="assets/zulip-logo.png" height=50 /> <img alt="Swift logo" src="assets/swift-logo.png" height=50 />
 
+[![Travis CI build status](https://img.shields.io/travis/skunkmb/zulip-swift.svg)](https://travis-ci.org/skunkmb/zulip-swift)
+[![GitHub tag](https://img.shields.io/github/tag/skunkmb/zulip-swift.svg)](https://github.com/skunkmb/zulip-swift)
+[![language badge](https://img.shields.io/badge/language-Swift-orange.svg)](https://swift.org)
+
 A library to access the Zulip API with **Swift**.
 
 ## Installation
