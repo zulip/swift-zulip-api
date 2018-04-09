@@ -20,7 +20,7 @@ In your `dependencies`, add
 dependencies: [
     .package(
         url: "https://github.com/skunkmb/zulip-swift.git",
-        from: "0.1.0"
+        from: "0.1.1"
     )
 ]
 ```

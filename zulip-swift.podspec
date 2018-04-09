@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'zulip-swift'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = 'A library to access the Zulip API with Swift.'
   s.license = { :type => 'MIT' }
   s.author = { 'Marco Burstein' => 'theskunkmb@gmail.com' }
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source_files = 'sources/ZulipSwift'
   s.source = {
     :git => 'https://github.com/skunkmb/zulip-swift.git',
-    :tag => '0.1.0'
+    :tag => '0.1.1'
   }
 
   # These are based on the Alamofire deployment targets.
