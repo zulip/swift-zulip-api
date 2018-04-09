@@ -8,6 +8,8 @@ A library to access the Zulip API with **Swift**.
 
 ## Installation
 
+### Swift Package Manager
+
 `zulip-swift` can be installed with the
 [Swift Package Manager](https://is.gd/aRdTkN).
 
@@ -21,6 +23,22 @@ dependencies: [
         from: "0.1.0"
     )
 ]
+```
+
+### CocoaPods
+
+`zulip-swift` can also be installed with [CocoaPods](https://is.gd/iMgFFg).
+
+In your `Podfile`, add `zulip-swift`.
+
+```ruby
+pod 'zulip-swift'
+```
+
+Then run `pod install` from the terminal.
+
+```bash
+pod install
 ```
 
 ## Usage
