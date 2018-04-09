@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/skunkmb/zulip-swift'
   s.source_files = 'sources/ZulipSwift'
   s.source = {
-    :git => 'https://github.com/skunkmb/zulip-swift',
+    :git => 'https://github.com/skunkmb/zulip-swift.git',
     :tag => '0.1.0'
   }
 
