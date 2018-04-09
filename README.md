@@ -4,7 +4,20 @@ A library to access the Zulip API with **Swift**.
 
 ## Installation
 
-TODO: Fill in this section once `zulip-swift` is published.
+`zulip-swift` can be installed with the
+[Swift Package Manager](https://is.gd/aRdTkN).
+
+In your `dependencies`, add
+[`https://github.com/skunkmb/zulip-swift.git`](https://is.gd/by9epF):
+
+```swift
+dependencies: [
+    .package(
+        url: "https://github.com/skunkmb/zulip-swift.git",
+        from: "0.1.0"
+    )
+]
+```
 
 ## Usage
 
