@@ -1,4 +1,4 @@
-# `zulip-swift` <img alt="Swift logo" src="assets/zulip-logo.png" height=50 /> <img alt="Swift logo" src="assets/swift-logo.png" height=50 />
+# `zulip-swift` <img alt="Swift logo" src="https://raw.githubusercontent.com/skunkmb/zulip-swift/master/assets/zulip-logo.png" height=50 /> <img alt="Swift logo" src="https://raw.githubusercontent.com/skunkmb/zulip-swift/master/assets/swift-logo.png" height=50 />
 
 [![Travis CI build status](https://img.shields.io/travis/skunkmb/zulip-swift.svg)](https://travis-ci.org/skunkmb/zulip-swift)
 [![GitHub tag](https://img.shields.io/github/tag/skunkmb/zulip-swift.svg)](https://github.com/skunkmb/zulip-swift)
@@ -67,25 +67,25 @@ functions:
 let messages = zulip.messages()
 ```
 
-[See the full `messages` docs.](docs/messages.md)
+[See the full `messages` docs.](https://github.com/skunkmb/zulip-swift/blob/master/docs/messages.md)
 
 **streams:**
 ```swift
 let streams = zulip.streams()
 ```
 
-[See the full `streams` docs.](docs/streams.md)
+[See the full `streams` docs.](https://github.com/skunkmb/zulip-swift/blob/master/docs/streams.md)
 
 **users:**
 ```swift
 let users = zulip.users()
 ```
 
-[See the full `users` docs.](docs/users.md)
+[See the full `users` docs.](https://github.com/skunkmb/zulip-swift/blob/master/docs/users.md)
 
 **events:**
 ```swift
 let events = zulip.events()
 ```
 
-[See the full `events` docs.](docs/events.md)
+[See the full `events` docs.](https://github.com/skunkmb/zulip-swift/blob/master/docs/events.md)
