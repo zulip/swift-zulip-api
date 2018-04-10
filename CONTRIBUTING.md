@@ -15,6 +15,12 @@ When making a new function, make sure that you:
 
 Also, make sure that you follow good committing practices.
 
+ - The title should be 50 characters or less.
+ - The title should end in a period.
+ - Wrap the body at 72 characters.
+ - Commits should be in the *imperative tense* (`Fix bug.` instead of
+   `Fixed bug.`).
+
 ### Swift
 
 Your Swift code should follow a few basic rules:
