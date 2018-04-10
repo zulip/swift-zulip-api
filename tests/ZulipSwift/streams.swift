@@ -118,7 +118,7 @@ class StreamsTests: XCTestCase {
         ]
 
         zulip.streams().getID(
-            name: "test here",
+            name: "zulip-swift-tests",
             callback: { (id, error) in
                 XCTAssertNotNil(
                     id,
@@ -182,7 +182,7 @@ class StreamsTests: XCTestCase {
         let expectations = [expectation(description: "`Streams.subscribe`")]
 
         zulip.streams().subscribe(
-            streams: [["name": "test here"]],
+            streams: [["name": "zulip-swift-tests"]],
             callback: { (subscribed, alreadySubscribed, unauthorized, error) in
                 XCTAssert(
                     subscribed != nil
@@ -211,7 +211,7 @@ class StreamsTests: XCTestCase {
         let expectations = [expectation(description: "`Streams.unsubscribe`")]
 
         zulip.streams().unsubscribe(
-            streamNames: ["test here"],
+            streamNames: ["zulip-swift-tests"],
             callback: { (unsubscribed, notSubscribed, error) in
                 XCTAssert(
                     unsubscribed != nil || notSubscribed != nil,

@@ -26,7 +26,7 @@ class EventsTests: XCTestCase {
 
         zulip.events().register(
             eventTypes: ["messages"],
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 XCTAssertNotNil(
                     queue,
@@ -45,7 +45,7 @@ class EventsTests: XCTestCase {
         zulip.events().register(
             applyMarkdown: true,
             eventTypes: ["messages"],
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 XCTAssertNotNil(
                     queue,
@@ -64,7 +64,7 @@ class EventsTests: XCTestCase {
         zulip.events().register(
             clientGravatar: true,
             eventTypes: ["messages"],
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 XCTAssertNotNil(
                     queue,
@@ -84,7 +84,7 @@ class EventsTests: XCTestCase {
         zulip.events().register(
             eventTypes: ["messages"],
             allPublicStreams: true,
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 XCTAssertNotNil(
                     queue,
@@ -104,7 +104,7 @@ class EventsTests: XCTestCase {
         zulip.events().register(
             eventTypes: ["messages"],
             includeSubscribers: true,
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 XCTAssertNotNil(
                     queue,
@@ -134,7 +134,7 @@ class EventsTests: XCTestCase {
 
         zulip.events().register(
             eventTypes: ["messages"],
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 guard
                     let queue = queue,
@@ -178,7 +178,7 @@ class EventsTests: XCTestCase {
 
         zulip.events().register(
             eventTypes: ["messages"],
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             callback: { (queue, error) in
                 guard
                     let queue = queue,

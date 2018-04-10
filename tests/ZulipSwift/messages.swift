@@ -12,8 +12,8 @@ class MessagesTests: XCTestCase {
 
         zulip.messages().send(
             messageType: MessageType.streamMessage,
-            to: "test here",
-            subject: "Test Message",
+            to: "zulip-swift-tests",
+            subject: "CI Tests",
             content: "Testing",
             callback: { (id, messageError) in
                 XCTAssertNotNil(
@@ -41,7 +41,7 @@ class MessagesTests: XCTestCase {
         let expectations = [expectation(description: "`Messages.get`")]
 
         zulip.messages().get(
-            narrow: [["stream", "test here"]],
+            narrow: [["stream", "zulip-swift-tests"]],
             anchor: 391920,
             amountBefore: 13,
             amountAfter: 13,
@@ -108,8 +108,8 @@ class MessagesTests: XCTestCase {
 
         zulip.messages().send(
             messageType: MessageType.streamMessage,
-            to: "test here",
-            subject: "Test Message",
+            to: "zulip-swift-tests",
+            subject: "CI Tests",
             content: "Testing",
             callback: { (id, messageError) in
                 guard let id = id else {
