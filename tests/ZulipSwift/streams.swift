@@ -131,7 +131,7 @@ class StreamsTests: XCTestCase {
                 )
 
                 XCTAssertEqual(
-                    7,
+                    224,
                     id,
                     "`Streams.getID` did not get the correct ID."
                 )
