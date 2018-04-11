@@ -3,9 +3,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "ZulipSwift",
+    name: "SwiftZulipAPI",
     products: [
-        Product.library(name: "ZulipSwift", targets: ["ZulipSwift"]),
+        Product.library(name: "SwiftZulipAPI", targets: ["SwiftZulipAPI"]),
     ],
     dependencies: [
         Package.Dependency.package(
@@ -15,14 +15,14 @@ let package = Package(
     ],
     targets: [
         Target.target(
-            name: "ZulipSwift",
+            name: "SwiftZulipAPI",
             dependencies: ["Alamofire"],
-            path: "sources/ZulipSwift"
+            path: "sources/SwiftZulipAPI"
         ),
         Target.testTarget(
-            name: "ZulipSwiftTests",
-            dependencies: ["ZulipSwift"],
-            path: "tests/ZulipSwift"
+            name: "SwiftZulipAPITests",
+            dependencies: ["SwiftZulipAPI"],
+            path: "tests/SwiftZulipAPI"
         ),
     ]
 )

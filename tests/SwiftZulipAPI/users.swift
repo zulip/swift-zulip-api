@@ -1,5 +1,5 @@
 import XCTest
-@testable import ZulipSwift
+@testable import SwiftZulipAPI
 
 class UsersTests: XCTestCase {
     func testGetAll() {

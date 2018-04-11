@@ -1,6 +1,6 @@
-# Contributing to `zulip-swift`
+# Contributing to `swift-zulip-api`
 
-:tada: Thank you for your interest in `zulip-swift`! :tada:
+:tada: Thank you for your interest in `swift-zulip-api`! :tada:
 
 Before you start, here are some things to note.
 

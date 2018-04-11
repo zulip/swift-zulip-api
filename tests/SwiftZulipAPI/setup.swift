@@ -1,5 +1,5 @@
 import XCTest
-@testable import ZulipSwift
+@testable import SwiftZulipAPI
 
 public func getZulip() -> Zulip? {
     let environmentVariables = ProcessInfo.processInfo.environment

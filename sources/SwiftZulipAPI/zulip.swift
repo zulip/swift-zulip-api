@@ -1,6 +1,6 @@
 /*:
     A Zulip client. This is the primary way of interacting with Zulip through
-    `zulip-swift`.
+    `swift-zulip-api`.
  */
 public class Zulip {
     //: The Zulip `Config` that is used.
