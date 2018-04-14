@@ -24,5 +24,10 @@ let package = Package(
             dependencies: ["SwiftZulipAPI"],
             path: "tests/SwiftZulipAPI"
         ),
+        Target.target(
+            name: "SwiftZulipAPIExample",
+            dependencies: ["SwiftZulipAPI"],
+            path: "example/SwiftZulipAPI"
+        ),
     ]
 )
