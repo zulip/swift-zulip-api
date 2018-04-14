@@ -132,8 +132,19 @@ case "messages.get":
         }
     )
 case "messages.render":
-    // TODO: Do something.
-    break
+    guard
+        let content = getParam(name: "content")
+    else {
+        break
+    }
+
+    zulip.messages().render(
+        content: content,
+        callback: { (rendered, error) in
+            handleError(error: error)
+            printSuccess(name: "rendered", value: rendered)
+        }
+    )
 case "messages.update":
     // TODO: Do something.
     break
