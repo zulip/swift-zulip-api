@@ -119,3 +119,5 @@ default:
     print("\nError: Incorrect command.")
     exit(0)
 }
+
+RunLoop.main.run()
