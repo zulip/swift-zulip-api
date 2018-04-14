@@ -168,8 +168,30 @@ case "messages.update":
         }
     )
 case "streams.getAll":
-    // TODO: Do something.
-    break
+    guard
+        let includePublicString = getParam(name: "include public"),
+        let includeSubscribedString = getParam(name: "include subscribed"),
+        let includeDefaultString = getParam(name: "include default"),
+        let includeAllActiveString = getParam(name: "include all active")
+    else {
+        break
+    }
+
+    let includePublic = includePublicString == "true" ? true : false
+    let includeSubscribed = includeSubscribedString == "true" ? true : false
+    let includeDefault = includeDefaultString == "true" ? true : false
+    let includeAllActive = includeAllActiveString == "true" ? true : false
+
+    zulip.streams().getAll(
+        includePublic: includePublic,
+        includeSubscribed: includeSubscribed,
+        includeDefault: includeDefault,
+        includeAllActive: includeAllActive,
+        callback: { (streams, error) in
+            handleError(error: error)
+            printSuccess(name: "streams", value: streams)
+        }
+    )
 case "streams.getID":
     // TODO: Do something.
     break
