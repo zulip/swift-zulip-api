@@ -193,8 +193,19 @@ case "streams.getAll":
         }
     )
 case "streams.getID":
-    // TODO: Do something.
-    break
+    guard
+        let name = getParam(name: "name")
+    else {
+        break
+    }
+
+    zulip.streams().getID(
+        name: name,
+        callback: { (id, error) in
+            handleError(error: error)
+            printSuccess(name: "ID", value: id)
+        }
+    )
 case "streams.getSubscribed":
     // TODO: Do something.
     break
