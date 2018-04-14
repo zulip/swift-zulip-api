@@ -146,8 +146,27 @@ case "messages.render":
         }
     )
 case "messages.update":
-    // TODO: Do something.
-    break
+    guard
+        let messageIDString = getParam(name: "message ID"),
+        let content = getParam(name: "content")
+    else {
+        break
+    }
+
+    guard
+        let messageID = Int(messageIDString)
+    else {
+        break
+    }
+
+    zulip.messages().update(
+        messageID: messageID,
+        content: content,
+        callback: { (error) in
+            handleError(error: error)
+            printSuccessWithNoValue()
+        }
+    )
 case "streams.getAll":
     // TODO: Do something.
     break
