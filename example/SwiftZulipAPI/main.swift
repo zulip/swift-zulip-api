@@ -207,8 +207,12 @@ case "streams.getID":
         }
     )
 case "streams.getSubscribed":
-    // TODO: Do something.
-    break
+    zulip.streams().getSubscribed(
+        callback: { (streams, error) in
+            handleError(error: error)
+            printSuccess(name: "streams", value: streams)
+        }
+    )
 case "streams.subscribe":
     // TODO: Do something.
     break
