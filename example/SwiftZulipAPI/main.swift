@@ -97,8 +97,35 @@ case "messages.send":
         }
     )
 case "messages.get":
-    // TODO: Do something.
-    break
+    guard
+        let streamString = getParam(name: "stream"),
+        let anchorString = getParam(name: "anchor"),
+        let amountBeforeString = getParam(name: "amount before"),
+        let amountAfterString = getParam(name: "amount after")
+    else {
+        break
+    }
+
+    let narrow = [["stream", streamString]]
+
+    guard
+        let anchor = Int(anchorString),
+        let amountBefore = Int(amountBeforeString),
+        let amountAfter = Int(amountAfterString)
+    else {
+        break
+    }
+
+    zulip.messages().get(
+        narrow: narrow,
+        anchor: anchor,
+        amountBefore: amountBefore,
+        amountAfter: amountAfter,
+        callback: { (messages, error) in
+            handleError(error: error)
+            printSuccess(name: "messages", value: messages)
+        }
+    )
 case "messages.render":
     // TODO: Do something.
     break
