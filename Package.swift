@@ -6,6 +6,10 @@ let package = Package(
     name: "SwiftZulipAPI",
     products: [
         Product.library(name: "SwiftZulipAPI", targets: ["SwiftZulipAPI"]),
+        Product.executable(
+            name: "SwiftZulipAPIExample",
+            targets: ["SwiftZulipAPIExample"]
+        ),
     ],
     dependencies: [
         Package.Dependency.package(
