@@ -69,6 +69,11 @@ func printSuccess(name: String, value: Any?) {
     exit(0)
 }
 
+func printSuccessWithNoValue() {
+    print("Success.")
+    exit(0)
+}
+
 switch command {
 case "messages.send":
     guard
