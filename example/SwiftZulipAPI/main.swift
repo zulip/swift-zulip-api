@@ -40,6 +40,35 @@ let config = Config(
 
 let zulip = Zulip(config: config)
 
+func getParam(name: String) -> String? {
+    print("\n" + name + ":")
+
+    guard let param = readLine(), param != "" else {
+        print("Error: No " + name + " entered.")
+        exit(0)
+    }
+
+    return param
+}
+
+func handleError(error: Error?) {
+    guard let error = error else {
+        return
+    }
+
+    printErrorString(string: String(describing: error))
+}
+
+func printErrorString(string: String) {
+    print("\nError: " + string + ".")
+    exit(0)
+}
+
+func printSuccess(name: String, value: Any?) {
+    print("\n" + name + ": " + String(describing: value))
+    exit(0)
+}
+
 switch command {
 case "messages.send":
     // TODO: Do something.
