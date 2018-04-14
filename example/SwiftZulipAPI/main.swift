@@ -87,6 +87,6 @@ case "events.deleteQueue":
     // TODO: Do something.
     break
 default:
-    print("Error: Incorrect command.")
+    print("\nError: Incorrect command.")
     exit(0)
 }
