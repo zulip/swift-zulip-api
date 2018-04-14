@@ -13,7 +13,7 @@ public class Users {
          - Parameters:
             - config: The `Config` to use.
      */
-    init(config: Config) {
+    public init(config: Config) {
         self.config = config
     }
 
@@ -28,7 +28,7 @@ public class Users {
             - callback: A callback, which will be passed a list of users, or an
               error if there is one.
      */
-    func getAll(
+    public func getAll(
         clientGravatar: Bool = false,
         callback: @escaping ([[String: Any]]?, Error?) -> Void
     ) {
@@ -67,7 +67,7 @@ public class Users {
             - callback: A callback, which will be passed the profile, or an
               error if there is one.
      */
-    func getCurrent(
+    public func getCurrent(
         clientGravatar: Bool = false,
         callback: @escaping ([String: Any]?, Error?) -> Void
     ) {
@@ -121,7 +121,7 @@ public class Users {
             - callback: A callback, which will be passed an error if there is
               one.
      */
-    func create(
+    public func create(
         email: String,
         password: String,
         fullName: String,

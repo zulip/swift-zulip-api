@@ -12,7 +12,7 @@ public class Zulip {
          - Parameters:
             - config: The `Config` to use.
      */
-    init(config: Config) {
+    public init(config: Config) {
         self.config = config
     }
 
@@ -21,7 +21,7 @@ public class Zulip {
 
          - Returns: The `Messages` client.
      */
-    func messages() -> Messages {
+    public func messages() -> Messages {
         return Messages(config: self.config)
     }
 
@@ -30,7 +30,7 @@ public class Zulip {
 
          - Returns: The `Streams` client.
      */
-    func streams() -> Streams {
+    public func streams() -> Streams {
         return Streams(config: self.config)
     }
 
@@ -39,7 +39,7 @@ public class Zulip {
 
          - Returns: The `Users` client.
      */
-    func users() -> Users {
+    public func users() -> Users {
         return Users(config: self.config)
     }
 
@@ -48,7 +48,7 @@ public class Zulip {
 
          - Returns: The `Events` client.
      */
-    func events() -> Events {
+    public func events() -> Events {
         return Events(config: self.config)
     }
 }

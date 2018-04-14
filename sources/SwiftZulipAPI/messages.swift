@@ -28,7 +28,7 @@ public class Messages {
          - Parameters:
             - config: The `Config` to use.
      */
-    init(config: Config) {
+    public init(config: Config) {
         self.config = config
     }
 
@@ -49,7 +49,7 @@ public class Messages {
             - callback: A callback, which will be passed the ID of the new
               message, or an error.
      */
-    func send(
+    public func send(
         messageType: MessageType,
         to: String,
         subject: String?,
@@ -114,7 +114,7 @@ public class Messages {
             - callback: A callback, which will be passed the messages, or an
               error.
      */
-    func get(
+    public func get(
         narrow: [Any],
         anchor: Int,
         amountBefore: Int,
@@ -177,7 +177,7 @@ public class Messages {
             - callback: A callback, which will be passed the rendered HTML
               string, or an `Error`.
      */
-    func render(
+    public func render(
         content: String,
         callback: @escaping (String?, Error?) -> Void
     ) {
@@ -218,7 +218,7 @@ public class Messages {
             - callback: A callback, which will be passed an Error if
               there is one.
      */
-    func update(
+    public func update(
         messageID: Int,
         content: String,
         callback: @escaping (Error?) -> Void

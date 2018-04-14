@@ -25,7 +25,7 @@ public class Events {
          - Parameters:
             - config: The `Config` to use.
      */
-    init(config: Config) {
+    public init(config: Config) {
         self.config = config
     }
 
@@ -70,7 +70,7 @@ public class Events {
               `last_event_id`, the initial event ID to receive an event with,
               or an error if there is one.
      */
-    func register(
+    public func register(
         applyMarkdown: Bool = false,
         clientGravatar: Bool = false,
         eventTypes: [String] = [],
@@ -181,7 +181,7 @@ public class Events {
             - callback: A callback, which will be passed a list of events, or
               an error, if there is one.
      */
-    func get(
+    public func get(
         queueID: String,
         lastEventID: Int,
         dontBlock: Bool = false,
@@ -225,7 +225,7 @@ public class Events {
             - callback: A callback, which will be passed an error if there is
               one.
      */
-    func deleteQueue(
+    public func deleteQueue(
         queueID: String,
         callback: @escaping (Error?) -> Void
     ) {

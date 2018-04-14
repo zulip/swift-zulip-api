@@ -24,7 +24,7 @@ public class Config {
             - realmURL: The URL of a Zulip realm.
               - Example: https://chat.zulip.org
      */
-    init(
+    public init(
         emailAddress: String,
         apiKey: String,
         realmURL: String

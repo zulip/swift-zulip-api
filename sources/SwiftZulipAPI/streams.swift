@@ -26,7 +26,7 @@ public class Streams {
          - Parameters:
             - config: The `Config` to use.
      */
-    init(config: Config) {
+    public init(config: Config) {
         self.config = config
     }
 
@@ -43,7 +43,7 @@ public class Streams {
             - callback: A callback, which will be passed the streams, or an
               error.
      */
-    func getAll(
+    public func getAll(
         includePublic: Bool = true,
         includeSubscribed: Bool = true,
         includeDefault: Bool = false,
@@ -91,7 +91,7 @@ public class Streams {
             - name: The name of the stream.
             - callback: A callback, which will be passed the ID, or an error.
      */
-    func getID(
+    public func getID(
         name: String,
         callback: @escaping (Int?, Error?) -> Void
     ) {
@@ -130,7 +130,7 @@ public class Streams {
             - callback: A callback, which will be passed the streams, or an
               error.
      */
-    func getSubscribed(
+    public func getSubscribed(
         callback: @escaping (
             [[String: Any]]?,
             Error?
@@ -181,7 +181,7 @@ public class Streams {
               and a list of names of streams that could not be subscribed to
               because the user was unauthorized; or an error if there is one.
      */
-    func subscribe(
+    public func subscribe(
         streams: [[String: Any]],
         inviteOnly: Bool = false,
         announce: Bool = false,
@@ -282,7 +282,7 @@ public class Streams {
               the streams that could not be unsubscrived from because the user
               was already subscribed, or an error if there is one.
      */
-    func unsubscribe(
+    public func unsubscribe(
         streamNames: [String],
         principals: [String] = [],
         callback: @escaping (
