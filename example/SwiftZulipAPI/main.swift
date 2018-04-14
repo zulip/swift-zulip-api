@@ -214,8 +214,31 @@ case "streams.getSubscribed":
         }
     )
 case "streams.subscribe":
-    // TODO: Do something.
-    break
+    guard
+        let streamString = getParam(name: "stream"),
+        let principalsString = getParam(name: "principals (comma-separated)")
+    else {
+        break
+    }
+
+    let streams = [["name": streamString]]
+    let principals = principalsString.components(separatedBy: ",")
+
+    zulip.streams().subscribe(
+        streams: streams,
+        principals: principals,
+        callback: { (subscribed, alreadySubscribed, unauthorized, error) in
+            handleError(error: error)
+            printSuccess(
+                name: "`subscribed`, `alreadySubscribed`, `unauthorized`",
+                value: [
+                    "subscribed": subscribed as Any,
+                    "alreadySubscribed": alreadySubscribed as Any,
+                    "unauthorized": unauthorized as Any,
+                ]
+            )
+        }
+    )
 case "streams.unsubscribe":
     // TODO: Do something.
     break
