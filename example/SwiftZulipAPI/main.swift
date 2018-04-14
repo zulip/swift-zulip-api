@@ -71,8 +71,31 @@ func printSuccess(name: String, value: Any?) {
 
 switch command {
 case "messages.send":
-    // TODO: Do something.
-    break
+    guard
+        let messageTypeString = getParam(name: "message type"),
+        let to = getParam(name: "to"),
+        let subject = getParam(name: "subject"),
+        let content = getParam(name: "content")
+    else {
+        break
+    }
+
+    let messageType = (
+        messageTypeString == "MessageType.streamMessage"
+            ? MessageType.streamMessage
+            : MessageType.privateMessage
+    )
+
+    zulip.messages().send(
+        messageType: messageType,
+        to: to,
+        subject: subject,
+        content: content,
+        callback: { (id, error) in
+            handleError(error: error)
+            printSuccess(name: "id", value: id)
+        }
+    )
 case "messages.get":
     // TODO: Do something.
     break
