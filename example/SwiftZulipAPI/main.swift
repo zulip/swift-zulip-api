@@ -227,13 +227,18 @@ case "streams.getSubscribed":
 case "streams.subscribe":
     guard
         let streamString = getParam(name: "stream"),
-        let principalsString = getParam(name: "principals (comma-separated)")
+        let principalsString = getParamAllowEmpty(
+            name: "principals (comma-separated)"
+        )
     else {
         break
     }
 
     let streams = [["name": streamString]]
-    let principals = principalsString.components(separatedBy: ",")
+    let principals = (
+        principalsString == ""
+            ? [] : principalsString.components(separatedBy: ",")
+    )
 
     zulip.streams().subscribe(
         streams: streams,
