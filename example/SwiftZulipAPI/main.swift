@@ -51,6 +51,17 @@ func getParam(name: String) -> String? {
     return param
 }
 
+func getParamAllowEmpty(name: String) -> String? {
+    print("\n" + name + ":")
+
+    guard let param = readLine() else {
+        print("Error: No " + name + " entered.")
+        exit(0)
+    }
+
+    return param
+}
+
 func handleError(error: Error?) {
     guard let error = error else {
         return
