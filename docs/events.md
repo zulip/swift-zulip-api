@@ -96,7 +96,7 @@ events.register(
 ### events.get
 
 ```swift
-events.register(
+events.get(
     queueID: "1300:400",
     lastEventID: 8,
     dontBlock: true,
@@ -110,7 +110,7 @@ events.register(
 ### events.deleteQueue
 
 ```swift
-events.register(
+events.deleteQueue(
     queueID: "1301:200",
     callback: { (error) in
         // The queue has now been deleted.

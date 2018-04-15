@@ -101,7 +101,7 @@ messages.get(
 ### messages.render
 
 ```swift
-messages.get(
+messages.render(
     content: "Testing, **testing**, :smiley:.",
     callback: { (rendered, error) in
         // Prints the following string (without newlines and whitespace):
@@ -117,7 +117,7 @@ messages.get(
 ### messages.update
 
 ```swift
-messages.get(
+messages.update(
     messageID: 13000,
     content: "Test Update",
     callback: { (error) in

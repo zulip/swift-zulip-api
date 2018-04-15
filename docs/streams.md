@@ -165,7 +165,7 @@ streams.subscribe(
 ### streams.unsubscribe
 
 ```swift
-streams.subscribe(
+streams.unsubscribe(
     streamsNames: ["test here", "announce"],
     principals: ["user1@example.com", "user2@example.com"]
     callback: { (unsubscribed, notSubscribed, error) in

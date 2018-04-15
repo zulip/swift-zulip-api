@@ -71,7 +71,7 @@ users.getCurrent(
 ### users.create
 
 ```swift
-users.getCurrent(
+users.create(
     email: "user@example.com",
     password: "somepassword",
     fullName: "Test User",
