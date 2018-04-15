@@ -377,8 +377,31 @@ case "events.register":
         }
     )
 case "events.get":
-    // TODO: Do something.
-    break
+    guard
+        let queueID = getParam(name: "queue ID"),
+        let lastEventIDString = getParam(name: "last event ID"),
+        let dontBlockString = getParam(name: "don't block")
+    else {
+        break
+    }
+
+    guard
+        let lastEventID = Int(lastEventIDString)
+    else {
+        break
+    }
+
+    let dontBlock = dontBlockString == "true" ? true : false
+
+    zulip.events().get(
+        queueID: queueID,
+        lastEventID: lastEventID,
+        dontBlock: dontBlock,
+        callback: { (events, error) in
+            handleError(error: error)
+            printSuccess(name: "events", value: events)
+        }
+    )
 case "events.deleteQueue":
     // TODO: Do something.
     break
