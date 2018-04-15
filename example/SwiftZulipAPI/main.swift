@@ -403,8 +403,19 @@ case "events.get":
         }
     )
 case "events.deleteQueue":
-    // TODO: Do something.
-    break
+    guard
+        let queueID = getParam(name: "queue ID")
+    else {
+        break
+    }
+
+    zulip.events().deleteQueue(
+        queueID: queueID,
+        callback: { (error) in
+            handleError(error: error)
+            printSuccessWithNoValue()
+        }
+    )
 default:
     print("\nError: Incorrect command.")
     exit(0)
