@@ -302,8 +302,21 @@ case "users.getAll":
         }
     )
 case "users.getCurrent":
-    // TODO: Do something.
-    break
+    guard
+        let clientGravatarString = getParam(name: "client gravatar")
+    else {
+        break
+    }
+
+    let clientGravatar = clientGravatarString == "true" ? true : false
+
+    zulip.users().getCurrent(
+        clientGravatar: clientGravatar,
+        callback: { (profile, error) in
+            handleError(error: error)
+            printSuccess(name: "profile", value: profile)
+        }
+    )
 case "users.create":
     // TODO: Do something.
     break
