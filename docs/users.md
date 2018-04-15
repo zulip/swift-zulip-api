@@ -53,7 +53,7 @@ users.getAll(
         // Prints a list of current users.
         print(users)
     }
- )
+)
 ```
 
 ### users.getCurrent
@@ -65,7 +65,7 @@ users.getCurrent(
         // Prints the current user's profile.
         print(profile)
     }
- )
+)
 ```
 
 ### users.create
@@ -80,5 +80,5 @@ users.create(
         // A user has been created, if the user is an admin. Otherwise, `error`
         // will not be `nil`.
     }
- )
+)
 ```
