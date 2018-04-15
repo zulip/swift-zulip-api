@@ -89,3 +89,16 @@ let events = zulip.events()
 ```
 
 [See the full `events` docs.](https://github.com/skunkmb/swift-zulip-api/blob/master/docs/events.md)
+
+### Examples
+
+Each of the function docs has examples for how to use the functions. There is
+also a [full Swift example file](https://github.com/skunkmb/swift-zulip-api/blob/master/example/SwiftZulipAPI/main.swift)
+if you want to see every function being used in an actual example program.
+The example can be run by using
+
+```bash
+swift run SwiftZulipAPIExample
+```
+
+from the terminal.
