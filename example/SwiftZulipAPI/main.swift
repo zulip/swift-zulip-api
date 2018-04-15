@@ -81,7 +81,7 @@ func printSuccess(name: String, value: Any?) {
 }
 
 func printSuccessWithNoValue() {
-    print("Success.")
+    print("\nSuccess.")
     exit(0)
 }
 
