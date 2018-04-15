@@ -97,7 +97,7 @@ events.register(
 
 ```swift
 events.register(
-    queueID: 1300,
+    queueID: "1300:400",
     lastEventID: 8,
     dontBlock: true,
     callback: { (events, error) in
@@ -111,7 +111,7 @@ events.register(
 
 ```swift
 events.register(
-    queueID: 1301,
+    queueID: "1301:200",
     callback: { (error) in
         // The queue has now been deleted.
     }
