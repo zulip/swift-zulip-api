@@ -338,8 +338,44 @@ case "users.create":
         }
     )
 case "events.register":
-    // TODO: Do something.
-    break
+    guard
+        let applyMarkdownString = getParam(name: "apply markdown"),
+        let clientGravatarString = getParam(name: "client gravatar"),
+        let eventTypesString = getParamAllowEmpty(
+            name: "event types (comma-separated)"
+        ),
+        let allPublicStreamsString = getParam(name: "all public streams"),
+        let includeSubscribersString = getParam(name: "include subscribers"),
+        let streamName = getParam(name: "stream name")
+    else {
+        break
+    }
+
+    let applyMarkdown = applyMarkdownString == "true" ? true : false
+    let clientGravatar = clientGravatarString == "true" ? true : false
+
+    let eventTypes = (
+        eventTypesString == ""
+            ? [] : eventTypesString.components(separatedBy: ",")
+    )
+
+    let allPublicStreams = allPublicStreamsString == "true" ? true : false
+    let includeSubscribers = includeSubscribersString == "true" ? true : false
+
+    let narrow = [["stream", streamName]]
+
+    zulip.events().register(
+        applyMarkdown: applyMarkdown,
+        clientGravatar: clientGravatar,
+        eventTypes: eventTypes,
+        allPublicStreams: allPublicStreams,
+        includeSubscribers: includeSubscribers,
+        narrow: narrow,
+        callback: { (queue, error) in
+            handleError(error: error)
+            printSuccess(name: "queue", value: queue)
+        }
+    )
 case "events.get":
     // TODO: Do something.
     break
