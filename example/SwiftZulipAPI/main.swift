@@ -286,8 +286,21 @@ case "streams.unsubscribe":
         }
     )
 case "users.getAll":
-    // TODO: Do something.
-    break
+    guard
+        let clientGravatarString = getParam(name: "client gravatar")
+    else {
+        break
+    }
+
+    let clientGravatar = clientGravatarString == "true" ? true : false
+
+    zulip.users().getAll(
+        clientGravatar: clientGravatar,
+        callback: { (users, error) in
+            handleError(error: error)
+            printSuccess(name: "users", value: users)
+        }
+    )
 case "users.getCurrent":
     // TODO: Do something.
     break
