@@ -318,8 +318,25 @@ case "users.getCurrent":
         }
     )
 case "users.create":
-    // TODO: Do something.
-    break
+    guard
+        let email = getParam(name: "email"),
+        let password = getParam(name: "password"),
+        let fullName = getParam(name: "full name"),
+        let shortName = getParam(name: "short name")
+    else {
+        break
+    }
+
+    zulip.users().create(
+        email: email,
+        password: password,
+        fullName: fullName,
+        shortName: shortName,
+        callback: { (error) in
+            handleError(error: error)
+            printSuccessWithNoValue()
+        }
+    )
 case "events.register":
     // TODO: Do something.
     break
