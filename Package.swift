@@ -6,9 +6,17 @@ let package = Package(
     name: "SwiftZulipAPI",
     products: [
         Product.library(name: "SwiftZulipAPI", targets: ["SwiftZulipAPI"]),
+        Product.library(
+            name: "SwiftZulipAPIBots",
+            targets: ["SwiftZulipAPIBots"]
+        ),
         Product.executable(
             name: "SwiftZulipAPIExample",
             targets: ["SwiftZulipAPIExample"]
+        ),
+        Product.executable(
+            name: "SwiftZulipAPIBotRunner",
+            targets: ["SwiftZulipAPIBotRunner"]
         ),
     ],
     dependencies: [
@@ -32,6 +40,16 @@ let package = Package(
             name: "SwiftZulipAPIExample",
             dependencies: ["SwiftZulipAPI"],
             path: "example/SwiftZulipAPI"
+        ),
+        Target.target(
+            name: "SwiftZulipAPIBots",
+            dependencies: ["SwiftZulipAPI"],
+            path: "bots/sources/SwiftZulipAPI"
+        ),
+        Target.target(
+            name: "SwiftZulipAPIBotRunner",
+            dependencies: ["SwiftZulipAPIBots"],
+            path: "bots/runner/SwiftZulipAPI"
         ),
     ]
 )
