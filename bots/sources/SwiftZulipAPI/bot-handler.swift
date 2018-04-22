@@ -236,8 +236,6 @@ public class BotHandler {
             message: message,
             contentWithoutMention: contentWithoutMention,
             callback: { (messageContent, error) in
-                print(messageContent, error)
-
                 if let error = error {
                     self.handleError(error: error)
                     return
