@@ -51,5 +51,10 @@ let package = Package(
             dependencies: ["SwiftZulipAPIBots"],
             path: "bots/runner/SwiftZulipAPI"
         ),
+        Target.testTarget(
+            name: "SwiftZulipAPIBotTests",
+            dependencies: ["SwiftZulipAPIBots"],
+            path: "bots/tests/SwiftZulipAPI"
+        ),
     ]
 )
