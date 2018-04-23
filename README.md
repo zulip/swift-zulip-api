@@ -102,3 +102,10 @@ swift run SwiftZulipAPIExample
 ```
 
 from the terminal.
+
+### Bots
+
+`swift-zulip-api` supports writing Bots to automatically respond to users. Each
+bot will respond when it is mentioned in a message.
+
+[See the full bots docs.](https://github.com/skunkmb/swift-zulip-api/blob/master/docs/bots.md)
