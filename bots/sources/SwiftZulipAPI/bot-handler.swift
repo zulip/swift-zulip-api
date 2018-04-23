@@ -305,7 +305,7 @@ public class BotHandler {
                 return
             }
 
-            let toString = to.flatMap({ recipient in
+            let toString = to.compactMap({ recipient in
                 guard let email = recipient["email"] as? String else {
                     return nil
                 }
