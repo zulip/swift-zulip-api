@@ -34,27 +34,27 @@ let package = Package(
         Target.testTarget(
             name: "SwiftZulipAPITests",
             dependencies: ["SwiftZulipAPI"],
-            path: "tests/SwiftZulipAPI"
+            path: "tests/SwiftZulipAPITests"
         ),
         Target.target(
             name: "SwiftZulipAPIExample",
             dependencies: ["SwiftZulipAPI"],
-            path: "example/SwiftZulipAPI"
+            path: "example/SwiftZulipAPIExample"
         ),
         Target.target(
             name: "SwiftZulipAPIBots",
             dependencies: ["SwiftZulipAPI"],
-            path: "bots/sources/SwiftZulipAPI"
+            path: "bots/sources/SwiftZulipAPIBots"
         ),
         Target.target(
             name: "SwiftZulipAPIBotRunner",
             dependencies: ["SwiftZulipAPIBots"],
-            path: "bots/runner/SwiftZulipAPI"
+            path: "bots/runner/SwiftZulipAPIBotRunner"
         ),
         Target.testTarget(
             name: "SwiftZulipAPIBotTests",
             dependencies: ["SwiftZulipAPIBots"],
-            path: "bots/tests/SwiftZulipAPI"
+            path: "bots/tests/SwiftZulipAPIBotTests"
         ),
     ]
 )

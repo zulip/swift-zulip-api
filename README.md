@@ -93,7 +93,7 @@ let events = zulip.events()
 ### Examples
 
 Each of the function docs has examples for how to use the functions. There is
-also a [full Swift example file](https://github.com/skunkmb/swift-zulip-api/blob/master/example/SwiftZulipAPI/main.swift)
+also a [full Swift example file](https://github.com/skunkmb/swift-zulip-api/blob/master/example/SwiftZulipAPIExample/main.swift)
 if you want to see every function being used in an actual example program.
 The example can be run by using
 
