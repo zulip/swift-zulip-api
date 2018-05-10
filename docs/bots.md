@@ -42,7 +42,7 @@ Writing a new bot is relatively simple, since all bots follow the same `Bot`
 protocol.
 
  1. Create a new file in
-    [`bots/sources/SwiftZulipAPIBots/bots/`](https://github.com/skunkmb/swift-zulip-api/blob/master/bots/sources/SwiftZulipAPIBots/bots)
+    [`bots/sources/SwiftZulipAPIBots/bots/`](https://github.com/zulip/swift-zulip-api/blob/master/bots/sources/SwiftZulipAPIBots/bots)
     with the name of your new bot.
 
  2. Make a new class. It should adopt the `Bot` protocol. It is required to
@@ -84,16 +84,16 @@ protocol.
            response, or an error if there is one.
 
     For a simple example of a `Bot` class, see
-    [`echo-bot`](https://github.com/skunkmb/swift-zulip-api/blob/master/bots/sources/SwiftZulipAPIBots/bots/echo-bot.swift).
+    [`echo-bot`](https://github.com/zulip/swift-zulip-api/blob/master/bots/sources/SwiftZulipAPIBots/bots/echo-bot.swift).
 
  3. Add the bot to the bot name `switch` statement at the bottom of
-    [`bots/runner/SwiftZulipAPIBotRunner/main.swift`](https://github.com/skunkmb/swift-zulip-api/blob/master/bots/runner/SwiftZulipAPIBotRunner/main.swift).
+    [`bots/runner/SwiftZulipAPIBotRunner/main.swift`](https://github.com/zulip/swift-zulip-api/blob/master/bots/runner/SwiftZulipAPIBotRunner/main.swift).
 
  4. Add some tests for the bot in
-    [`bots/tests/SwiftZulipAPIBotTests/bots/`](https://github.com/skunkmb/swift-zulip-api/blob/master/bots/tests/SwiftZulipAPIBotTests/bots/).
+    [`bots/tests/SwiftZulipAPIBotTests/bots/`](https://github.com/zulip/swift-zulip-api/blob/master/bots/tests/SwiftZulipAPIBotTests/bots/).
 
     See
-    [the `echo-bot` tests](https://github.com/skunkmb/swift-zulip-api/blob/master/bots/tests/SwiftZulipAPIBotTests/bots/echo-bot.swift)
+    [the `echo-bot` tests](https://github.com/zulip/swift-zulip-api/blob/master/bots/tests/SwiftZulipAPIBotTests/bots/echo-bot.swift)
     for an example.
 
  5. Add docs for the bot at the bottom of this document.

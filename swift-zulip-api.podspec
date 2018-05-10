@@ -4,10 +4,10 @@ Pod::Spec.new do |s|
   s.summary = 'A library to access the Zulip API with Swift.'
   s.license = { :type => 'MIT' }
   s.author = { 'Marco Burstein' => 'theskunkmb@gmail.com' }
-  s.homepage = 'https://github.com/skunkmb/swift-zulip-api'
+  s.homepage = 'https://github.com/zulip/swift-zulip-api'
   s.source_files = 'sources/SwiftZulipAPI'
   s.source = {
-    :git => 'https://github.com/skunkmb/swift-zulip-api.git',
+    :git => 'https://github.com/zulip/swift-zulip-api.git',
     :tag => '0.3.0'
   }
 
