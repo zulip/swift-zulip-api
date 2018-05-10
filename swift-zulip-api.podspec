@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/zulip/swift-zulip-api.git',
     :tag => '0.3.0'
   }
+  s.swift_version = '4.1'
 
   # These are based on the Alamofire deployment targets.
   s.ios.deployment_target = '8.0'
