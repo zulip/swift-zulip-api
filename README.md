@@ -46,6 +46,8 @@ pod install
 ### Set-up
 
 ```swift
+import SwiftZulipAPI
+
 // Set up a Zulip configuration.
 let config = Config(
     emailAddress: "email@example.com",
