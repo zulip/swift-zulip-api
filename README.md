@@ -1,6 +1,6 @@
 # `swift-zulip-api` <img alt="Swift logo" src="https://raw.githubusercontent.com/zulip/swift-zulip-api/master/assets/zulip-logo.png" height=50 /> <img alt="Swift logo" src="https://raw.githubusercontent.com/zulip/swift-zulip-api/master/assets/swift-logo.png" height=50 />
 
-[![Travis CI build status](https://img.shields.io/travis/zulip/swift-zulip-api.svg)](https://travis-ci.org/zulip/swift-zulip-api)
+[![Travis CI build status](https://img.shields.io/travis/com/zulip/swift-zulip-api.svg)](https://travis-ci.com/github/zulip/swift-zulip-api)
 [![GitHub tag](https://img.shields.io/github/tag/zulip/swift-zulip-api.svg)](https://github.com/zulip/swift-zulip-api)
 [![language badge](https://img.shields.io/badge/language-Swift-orange.svg)](https://swift.org)
 
