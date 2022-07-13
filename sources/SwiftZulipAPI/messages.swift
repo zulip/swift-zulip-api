@@ -116,7 +116,7 @@ public class Messages {
      */
     public func get(
         narrow: [Any],
-        anchor: Int,
+        anchor: String,
         amountBefore: Int,
         amountAfter: Int,
         callback: @escaping (
